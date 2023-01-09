@@ -1,0 +1,29 @@
+{
+  "name": "react-vite-storybook-typescript-starter",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": { "VARIANT": "18-bullseye" }
+  },
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "streetsidesoftware.code-spell-checker",
+    "esbenp.prettier-vscode",
+    "mikestead.dotenv",
+    "eamodio.gitlens",
+    "vscode-icons-team.vscode-icons",
+    "mgmcdermott.vscode-language-babel",
+    "dbaeumer.vscode-eslint",
+    "styled-components.vscode-styled-components",
+    "silvenon.mdx"
+  ],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "npm install --legacy-peer-deps"
+
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  // "remoteUser": "node"
+}
