@@ -1,5 +1,5 @@
 {
-  "name": "react-vite-storybook-typescript-starter",
+  "name": "react-alternating-timeline",
   "version": "0.1.0",
   "description": "A React component library starter with Storybook, Vite and Typescript.",
   "keywords": [
@@ -10,30 +10,30 @@
     "vite",
     "storybook"
   ],
-  "homepage": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter",
+  "homepage": "https://github.com/openscript-ch/react-alternating-timeline",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter"
+    "url": "https://github.com/openscript-ch/react-alternating-timeline"
   },
   "bugs": {
-    "url": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter/issues"
+    "url": "https://github.com/openscript-ch/react-alternating-timeline/issues"
   },
   "author": "openscript GmbH <hi+npm@openscript.ch>",
   "license": "MIT",
-  "main": "./react-vite-storybook-typescript-starter.umd.js",
-  "module": "./react-vite-storybook-typescript-starter.es.js",
+  "main": "./react-alternating-timeline.umd.js",
+  "module": "./react-alternating-timeline.es.js",
   "exports": {
     ".": {
-      "import": "./react-vite-storybook-typescript-starter.es.js",
-      "require": "./react-vite-storybook-typescript-starter.umd.js"
+      "import": "./react-alternating-timeline.es.js",
+      "require": "./react-alternating-timeline.umd.js"
     }
   },
   "size-limit": [
     {
-      "path": "./dist/react-vite-storybook-typescript-starter.es.js"
+      "path": "./dist/react-alternating-timeline.es.js"
     },
     {
-      "path": "./dist/react-vite-storybook-typescript-starter.umd.js"
+      "path": "./dist/react-alternating-timeline.umd.js"
     }
   ],
   "scripts": {

@@ -1,5 +1,5 @@
 {
-  "name": "react-vite-storybook-typescript-starter",
+  "name": "react-alternating-timeline",
   "build": {
     "dockerfile": "Dockerfile",
     "args": { "VARIANT": "18-bullseye" }
