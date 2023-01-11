@@ -8,7 +8,7 @@ export type TimelineItemProps = PropsWithChildren<{
 
 export function TimelineItem({ className, title, date, children }: TimelineItemProps) {
   return (
-    <div className={className}>
+    <div className={`${className} timeline-item`}>
       <p>{date.toISOString()}</p>
       <p>{title}</p>
       {children}

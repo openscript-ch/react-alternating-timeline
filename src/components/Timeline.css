@@ -1,0 +1,14 @@
+.timeline {
+  position: relative;
+}
+
+div.timeline__line {
+  background-color: black;
+  width: 0.5rem;
+  height: 20rem;
+  margin-inline: auto;
+}
+
+.timeline-item {
+  position: absolute;
+}
