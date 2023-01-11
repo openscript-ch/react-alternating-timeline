@@ -1,1 +1,1 @@
-export { AlternatingTimeline } from './components/AlternatingTimeline';
+export { Timeline } from './components/Timeline';
