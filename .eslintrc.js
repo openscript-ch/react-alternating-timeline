@@ -28,5 +28,6 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/jsx-fragments': ['error', 'element'],
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
+    'react/jsx-props-no-spreading': 'off',
   },
 };
