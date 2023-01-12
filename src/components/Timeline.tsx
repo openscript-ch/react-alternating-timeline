@@ -19,12 +19,21 @@ export function Timeline({ items }: TimelineProps) {
 
   useEffect(() => {
     const elements = Array.from(getRefMap().values());
-    const heights = elements.map((item) => item.offsetHeight);
 
-    elements.forEach((item, index) => {
+    let leftHeight = 0;
+    let rightHeight = 0;
+
+    elements.forEach((item) => {
       const element = item;
-      const topOffset = heights.slice(0, index).reduce((prev, curr) => prev + curr, 0);
-      element.style.top = `${topOffset}px`;
+      if (leftHeight > rightHeight) {
+        element.style.top = `${rightHeight}px`;
+        element.style.right = '0';
+        rightHeight += element.offsetHeight;
+      } else {
+        element.style.top = `${leftHeight}px`;
+        leftHeight += element.offsetHeight;
+        element.style.left = '0';
+      }
     });
   }, [itemsRef]);
 
