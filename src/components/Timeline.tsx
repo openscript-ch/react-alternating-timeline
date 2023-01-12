@@ -2,11 +2,25 @@ import './Timeline.css';
 import { useEffect, useRef } from 'react';
 import { TimelineItem, TimelineItemProps } from './TimelineItem';
 
+type OffsetConfig = number | { left?: number; right?: number };
+
+const resolveOffsets = (offset: OffsetConfig) =>
+  typeof offset === 'number' ? { right: offset, left: 0 } : { right: offset.right ?? 0, left: offset.left ?? 0 };
+
 export type TimelineProps = {
   items: TimelineItemProps[];
+  gap?: number;
+  offset?: OffsetConfig;
 };
 
-export function Timeline({ items }: TimelineProps) {
+const defaultTimelineConfig: Partial<TimelineProps> = {
+  gap: 30,
+  offset: 30,
+};
+
+export function Timeline(props: TimelineProps) {
+  const { items, gap, offset } = { ...defaultTimelineConfig, ...props };
+
   const itemsRef = useRef<Map<Date, HTMLElement>>();
 
   function getRefMap() {
@@ -20,18 +34,19 @@ export function Timeline({ items }: TimelineProps) {
   useEffect(() => {
     const elements = Array.from(getRefMap().values());
 
-    let leftHeight = 0;
-    let rightHeight = 0;
+    const { left, right } = resolveOffsets(offset ?? 0);
+    let leftHeight = left;
+    let rightHeight = right;
 
     elements.forEach((item) => {
       const element = item;
       if (leftHeight > rightHeight) {
         element.style.top = `${rightHeight}px`;
         element.style.right = '0';
-        rightHeight += element.offsetHeight;
+        rightHeight += element.offsetHeight + (gap ?? 0);
       } else {
         element.style.top = `${leftHeight}px`;
-        leftHeight += element.offsetHeight;
+        leftHeight += element.offsetHeight + (gap ?? 0);
         element.style.left = '0';
       }
     });
