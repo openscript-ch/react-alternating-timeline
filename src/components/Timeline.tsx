@@ -1,5 +1,5 @@
 import './Timeline.css';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { TimelineItem, TimelineItemProps } from './TimelineItem';
 
 export type TimelineProps = {
@@ -7,7 +7,7 @@ export type TimelineProps = {
 };
 
 export function Timeline({ items }: TimelineProps) {
-  const itemsRef = useRef<Map<Date, HTMLDivElement>>();
+  const itemsRef = useRef<Map<Date, HTMLElement>>();
 
   function getRefMap() {
     if (!itemsRef.current) {
@@ -17,11 +17,23 @@ export function Timeline({ items }: TimelineProps) {
     return itemsRef.current;
   }
 
+  useEffect(() => {
+    const elements = Array.from(getRefMap().values());
+    const heights = elements.map((item) => item.offsetHeight);
+
+    elements.forEach((item, index) => {
+      const element = item;
+      const topOffset = heights.slice(0, index).reduce((prev, curr) => prev + curr, 0);
+      element.style.top = `${topOffset}px`;
+    });
+  }, [itemsRef]);
+
   return (
     <div className="timeline">
       <div className="timeline__line" />
       {items.map((item) => (
-        <div
+        <TimelineItem
+          {...item}
           ref={(node) => {
             const map = getRefMap();
             if (node) {
@@ -30,9 +42,8 @@ export function Timeline({ items }: TimelineProps) {
               map.delete(item.date);
             }
           }}
-        >
-          <TimelineItem key={item.date.toISOString()} {...item} />
-        </div>
+          key={item.date.toISOString()}
+        />
       ))}
     </div>
   );
