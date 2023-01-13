@@ -42,12 +42,12 @@ export function Timeline(props: TimelineProps) {
       const element = item;
       if (leftHeight > rightHeight) {
         element.style.top = `${rightHeight}px`;
-        element.style.right = '0';
+        element.classList.add('timeline-item--right');
         rightHeight += element.offsetHeight + (gap ?? 0);
       } else {
         element.style.top = `${leftHeight}px`;
         leftHeight += element.offsetHeight + (gap ?? 0);
-        element.style.left = '0';
+        element.classList.add('timeline-item--left');
       }
     });
   }, [itemsRef]);

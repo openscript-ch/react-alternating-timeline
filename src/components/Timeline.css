@@ -11,5 +11,13 @@ div.timeline__line {
 
 .timeline-item {
   position: absolute;
-  width: 50%;
+  width: 45%;
+}
+
+.timeline-item--left {
+  left: 0;
+}
+
+.timeline-item--right {
+  right: 0;
 }
