@@ -5,7 +5,7 @@
 div.timeline__line {
   background-color: black;
   width: 0.5rem;
-  height: 20rem;
+  height: 100%;
   margin-inline: auto;
 }
 

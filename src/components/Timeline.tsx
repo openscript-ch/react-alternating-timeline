@@ -21,6 +21,7 @@ const defaultTimelineConfig: Partial<TimelineProps> = {
 export function Timeline(props: TimelineProps) {
   const { items, gap, offset } = { ...defaultTimelineConfig, ...props };
 
+  const timelineRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<Map<Date, HTMLElement>>();
 
   function getRefMap() {
@@ -50,10 +51,15 @@ export function Timeline(props: TimelineProps) {
         element.classList.add('timeline-item--left');
       }
     });
+
+    const timelineElement = timelineRef.current;
+    if (timelineElement) {
+      timelineElement.style.height = `${Math.max(leftHeight, rightHeight)}px`;
+    }
   }, [itemsRef]);
 
   return (
-    <div className="timeline">
+    <div className="timeline" ref={timelineRef}>
       <div className="timeline__line" />
       {items.map((item) => (
         <TimelineItem
