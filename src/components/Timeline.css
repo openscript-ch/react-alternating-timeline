@@ -1,7 +1,12 @@
 .timeline {
   --timeline-line-width: 0.2rem;
+  --timeline-line-color: black;
   --marker-line-width: var(--timeline-line-width);
+  --marker-line-color: var(--timeline-line-color);
   --marker-size: 1.5rem;
+  --marker-color: var(--timeline-line-color);
+  --marker-inner-size: 1rem;
+  --marker-inner-color: white;
 
   position: relative;
 }
@@ -28,7 +33,7 @@ div.timeline__line {
 }
 
 .timeline-item__content {
-  border: 1px solid black;
+  border: 0.2rem solid black;
   padding: 1rem;
   flex: 1;
 }
@@ -38,25 +43,44 @@ div.timeline-item__marker {
   height: var(--marker-line-width);
   margin-top: 2rem;
   width: 5rem;
-  background-color: black;
+  background-color: var(--marker-line-color);
 }
 
-.timeline-item__marker::after {
+.timeline-item__marker::after,
+.timeline-item__marker::before {
   content: '';
   border-radius: 50%;
+  position: absolute;
+}
+
+.timeline-item__marker::before {
   width: var(--marker-size);
   height: var(--marker-size);
-  background-color: black;
-  position: absolute;
+  background-color: var(--marker-color);
   top: calc(-1 * var(--marker-size) / 2 + var(--marker-line-width) / 2);
 }
 
-.timeline-item--left .timeline-item__marker::after {
+.timeline-item__marker::after {
+  width: var(--marker-inner-size);
+  height: var(--marker-inner-size);
+  background-color: var(--marker-inner-color);
+  top: calc(-1 * var(--marker-inner-size) / 2 + var(--marker-line-width) / 2);
+}
+
+.timeline-item--left .timeline-item__marker::before {
   right: calc(-1 * var(--marker-size) / 2);
 }
 
-.timeline-item--right .timeline-item__marker::after {
+.timeline-item--left .timeline-item__marker::after {
+  right: calc(-1 * var(--marker-inner-size) / 2);
+}
+
+.timeline-item--right .timeline-item__marker::before {
   left: calc(-1 * var(--marker-size) / 2);
+}
+
+.timeline-item--right .timeline-item__marker::after {
+  left: calc(-1 * var(--marker-inner-size) / 2);
 }
 
 .timeline-item--left .timeline-item__marker {
