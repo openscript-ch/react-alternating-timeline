@@ -7,6 +7,7 @@
   --marker-color: var(--timeline-line-color);
   --marker-inner-size: 1rem;
   --marker-inner-color: white;
+  --marker-radius: 50%;
 
   position: relative;
 }
@@ -49,7 +50,7 @@ div.timeline-item__marker {
 .timeline-item__marker::after,
 .timeline-item__marker::before {
   content: '';
-  border-radius: 50%;
+  border-radius: var(--marker-radius);
   position: absolute;
 }
 
