@@ -1,17 +1,22 @@
 .timeline {
+  --timeline-line-width: 0.2rem;
+  --marker-line-width: var(--timeline-line-width);
+  --marker-size: 1.5rem;
+
   position: relative;
 }
 
 div.timeline__line {
   background-color: black;
-  width: 0.5rem;
+  width: var(--timeline-line-width);
   height: 100%;
   margin-inline: auto;
 }
 
 .timeline-item {
   position: absolute;
-  width: 45%;
+  width: 50%;
+  display: flex;
 }
 
 .timeline-item--left {
@@ -20,4 +25,40 @@ div.timeline__line {
 
 .timeline-item--right {
   right: 0;
+}
+
+.timeline-item__content {
+  border: 1px solid black;
+  padding: 1rem;
+  flex: 1;
+}
+
+div.timeline-item__marker {
+  position: relative;
+  height: var(--marker-line-width);
+  margin-top: 2rem;
+  width: 5rem;
+  background-color: black;
+}
+
+.timeline-item__marker::after {
+  content: '';
+  border-radius: 50%;
+  width: var(--marker-size);
+  height: var(--marker-size);
+  background-color: black;
+  position: absolute;
+  top: calc(-1 * var(--marker-size) / 2 + var(--marker-line-width) / 2);
+}
+
+.timeline-item--left .timeline-item__marker::after {
+  right: calc(-1 * var(--marker-size) / 2);
+}
+
+.timeline-item--right .timeline-item__marker::after {
+  left: calc(-1 * var(--marker-size) / 2);
+}
+
+.timeline-item--left .timeline-item__marker {
+  order: 1;
 }

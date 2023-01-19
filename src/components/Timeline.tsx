@@ -14,8 +14,8 @@ export type TimelineProps = {
 };
 
 const defaultTimelineConfig: Partial<TimelineProps> = {
-  gap: 30,
-  offset: 30,
+  gap: 50,
+  offset: 50,
 };
 
 export function Timeline(props: TimelineProps) {

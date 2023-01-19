@@ -9,9 +9,12 @@ export type TimelineItemProps = PropsWithChildren<{
 export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(({ className, title, date, children }, ref) => {
   return (
     <div ref={ref} className={`${className} timeline-item`}>
-      <p>{date.toISOString()}</p>
-      <p>{title}</p>
-      {children}
+      <div className="timeline-item__marker" />
+      <div className="timeline-item__content">
+        <p>{date.toISOString()}</p>
+        <p>{title}</p>
+        {children}
+      </div>
     </div>
   );
 });
