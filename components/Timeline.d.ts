@@ -1,10 +1,10 @@
-import { TimelineItemProps } from './TimelineItem';
+import { PropsWithKey, TimelineItemProps } from './TimelineItem';
 declare type OffsetConfig = number | {
     left?: number;
     right?: number;
 };
 export declare type TimelineProps = {
-    items: TimelineItemProps[];
+    items: PropsWithKey<TimelineItemProps>[];
     gap?: number;
     offset?: OffsetConfig;
 };

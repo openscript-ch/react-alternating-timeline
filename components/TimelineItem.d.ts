@@ -1,4 +1,7 @@
-import { PropsWithChildren } from 'react';
+import { Key, PropsWithChildren } from 'react';
+export declare type PropsWithKey<T> = T & {
+    key: Key;
+};
 export declare type TimelineItemProps = PropsWithChildren<{
     className?: string;
     date: Date;
