@@ -7,6 +7,16 @@ type OffsetConfig = number | { left?: number; right?: number };
 const resolveOffsets = (offset: OffsetConfig) =>
   typeof offset === 'number' ? { right: offset, left: 0 } : { right: offset.right ?? 0, left: offset.left ?? 0 };
 
+const MIN_MARKER_OFFSET = 50;
+
+const getMarkerCompensationOffset = (left: number, right: number) => {
+  const heightDifference = Math.abs(left - right);
+  if (heightDifference < MIN_MARKER_OFFSET) {
+    return MIN_MARKER_OFFSET - heightDifference;
+  }
+  return 0;
+};
+
 export type TimelineProps = {
   items: TimelineItemProps[];
   gap?: number;
@@ -41,14 +51,19 @@ export function Timeline(props: TimelineProps) {
 
     elements.forEach((item) => {
       const element = item;
+
       if (leftHeight > rightHeight) {
+        leftHeight += getMarkerCompensationOffset(leftHeight, rightHeight);
+
         element.style.top = `${rightHeight}px`;
         element.classList.add('timeline-item--right');
         rightHeight += element.offsetHeight + (gap ?? 0);
       } else {
+        rightHeight += getMarkerCompensationOffset(leftHeight, rightHeight);
+
         element.style.top = `${leftHeight}px`;
-        leftHeight += element.offsetHeight + (gap ?? 0);
         element.classList.add('timeline-item--left');
+        leftHeight += element.offsetHeight + (gap ?? 0);
       }
     });
 
