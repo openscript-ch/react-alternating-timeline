@@ -14,8 +14,8 @@ export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(({ cla
   return (
     <div ref={ref} className={['timeline-item', className].join(' ')}>
       <div className="timeline-item__marker" />
-      <div className="timeline-item__content">
-        <p>{date.toISOString()}</p>
+      <div className="timeline-card">
+        <p className="timeline-card__date">{date.toISOString()}</p>
         <p>{title}</p>
         {children}
       </div>

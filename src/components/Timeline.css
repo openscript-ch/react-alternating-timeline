@@ -12,7 +12,7 @@
   position: relative;
 }
 
-div.timeline__line {
+.timeline__line {
   background-color: black;
   width: var(--timeline-line-width);
   height: 100%;
@@ -33,13 +33,24 @@ div.timeline__line {
   right: 0;
 }
 
-.timeline-item__content {
+.timeline-card {
   border: 0.2rem solid black;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
-div.timeline-item__marker {
+.timeline-card img {
+  width: 100%;
+  height: auto;
+}
+
+.timeline-card__date {
+  margin-left: auto;
+}
+
+.timeline-item__marker {
   position: relative;
   height: var(--marker-line-width);
   margin-top: 2rem;
