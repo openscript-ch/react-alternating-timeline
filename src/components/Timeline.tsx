@@ -1,6 +1,6 @@
 import './Timeline.css';
 import { useEffect, useRef } from 'react';
-import { TimelineItem, TimelineItemProps } from './TimelineItem';
+import { PropsWithKey, TimelineItem, TimelineItemProps } from './TimelineItem';
 
 type OffsetConfig = number | { left?: number; right?: number };
 
@@ -18,7 +18,7 @@ const getMarkerCompensationOffset = (left: number, right: number) => {
 };
 
 export type TimelineProps = {
-  items: TimelineItemProps[];
+  items: PropsWithKey<TimelineItemProps>[];
   gap?: number;
   offset?: OffsetConfig;
 };
@@ -87,7 +87,6 @@ export function Timeline(props: TimelineProps) {
               map.delete(item.date);
             }
           }}
-          key={item.date.toISOString()}
         />
       ))}
     </div>

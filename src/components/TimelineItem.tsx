@@ -1,4 +1,8 @@
-import { forwardRef, PropsWithChildren } from 'react';
+import { forwardRef, Key, PropsWithChildren } from 'react';
+
+export type PropsWithKey<T> = T & {
+  key: Key;
+};
 
 export type TimelineItemProps = PropsWithChildren<{
   className?: string;
@@ -8,7 +12,7 @@ export type TimelineItemProps = PropsWithChildren<{
 
 export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(({ className, title, date, children }, ref) => {
   return (
-    <div ref={ref} className={`${className} timeline-item`}>
+    <div ref={ref} className={['timeline-item', className].join(' ')}>
       <div className="timeline-item__marker" />
       <div className="timeline-item__content">
         <p>{date.toISOString()}</p>
