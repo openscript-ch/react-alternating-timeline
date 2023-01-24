@@ -1,5 +1,5 @@
 import './Timeline.css';
-import { useEffect, useRef } from 'react';
+import { Key, useEffect, useRef } from 'react';
 import { PropsWithKey, TimelineItem, TimelineItemProps } from './TimelineItem';
 
 type OffsetConfig = number | { left?: number; right?: number };
@@ -21,19 +21,22 @@ export type TimelineProps = {
   items: PropsWithKey<TimelineItemProps>[];
   gap?: number;
   offset?: OffsetConfig;
+  dateFormat?: string;
+  dateLocale?: Locale;
   className?: string;
 };
 
 const defaultTimelineConfig: Partial<TimelineProps> = {
   gap: 50,
   offset: 50,
+  dateFormat: 'P',
 };
 
 export function Timeline(props: TimelineProps) {
-  const { items, gap, offset, className } = { ...defaultTimelineConfig, ...props };
+  const { items, gap, offset, className, dateFormat, dateLocale } = { ...defaultTimelineConfig, ...props };
 
   const timelineRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<Map<Date, HTMLElement>>();
+  const itemsRef = useRef<Map<Key, HTMLElement>>();
 
   function getRefMap() {
     if (!itemsRef.current) {
@@ -87,13 +90,15 @@ export function Timeline(props: TimelineProps) {
       <div className="timeline__line" />
       {items.map((item) => (
         <TimelineItem
+          dateFormat={dateFormat}
+          dateLocale={dateLocale}
           {...item}
           ref={(node) => {
             const map = getRefMap();
             if (node) {
-              map.set(item.date, node);
+              map.set(item.key, node);
             } else {
-              map.delete(item.date);
+              map.delete(item.key);
             }
           }}
         />
