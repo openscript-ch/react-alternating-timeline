@@ -4,12 +4,16 @@ export declare type PropsWithKey<T> = T & {
 };
 export declare type TimelineItemProps = PropsWithChildren<{
     className?: string;
-    date: Date;
+    date: Date | string;
+    dateFormat?: string;
+    dateLocale?: Locale;
     title: string;
 }>;
 export declare const TimelineItem: import("react").ForwardRefExoticComponent<{
     className?: string | undefined;
-    date: Date;
+    date: Date | string;
+    dateFormat?: string | undefined;
+    dateLocale?: Locale | undefined;
     title: string;
 } & {
     children?: import("react").ReactNode;
