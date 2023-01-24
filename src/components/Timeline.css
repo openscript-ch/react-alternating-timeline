@@ -1,4 +1,4 @@
-.timeline {
+:where(.timeline) {
   --timeline-line-width: 0.2rem;
   --timeline-line-color: black;
   --marker-line-width: var(--timeline-line-width);
@@ -13,7 +13,7 @@
 }
 
 .timeline__line {
-  background-color: black;
+  background-color: var(--timeline-line-color);
   width: var(--timeline-line-width);
   height: 100%;
   margin-inline: auto;

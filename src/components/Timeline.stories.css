@@ -1,0 +1,32 @@
+.styled-timeline * {
+  margin: 0;
+  padding: 0;
+}
+
+.styled-timeline {
+  --timeline-line-width: 2px;
+  --timeline-line-color: gray;
+  --marker-inner-color: hotpink;
+  --marker-color: gray;
+  --marker-size: 1.5rem;
+
+  font-family: sans-serif;
+  line-height: 1.4;
+}
+
+.styled-timeline .timeline-card {
+  border: none;
+  padding: 2rem;
+  border-radius: 0.2rem;
+  box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.2);
+}
+
+.styled-timeline .timeline-card__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.styled-timeline img {
+  margin-top: 1rem;
+}

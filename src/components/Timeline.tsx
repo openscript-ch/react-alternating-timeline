@@ -21,6 +21,7 @@ export type TimelineProps = {
   items: PropsWithKey<TimelineItemProps>[];
   gap?: number;
   offset?: OffsetConfig;
+  className?: string;
 };
 
 const defaultTimelineConfig: Partial<TimelineProps> = {
@@ -29,7 +30,7 @@ const defaultTimelineConfig: Partial<TimelineProps> = {
 };
 
 export function Timeline(props: TimelineProps) {
-  const { items, gap, offset } = { ...defaultTimelineConfig, ...props };
+  const { items, gap, offset, className } = { ...defaultTimelineConfig, ...props };
 
   const timelineRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<Map<Date, HTMLElement>>();
@@ -74,7 +75,7 @@ export function Timeline(props: TimelineProps) {
   }, [itemsRef]);
 
   return (
-    <div className="timeline" ref={timelineRef}>
+    <div className={['timeline', className].join(' ')} ref={timelineRef}>
       <div className="timeline__line" />
       {items.map((item) => (
         <TimelineItem
