@@ -23,6 +23,7 @@
   position: absolute;
   width: 50%;
   display: flex;
+  transition: top 0.1s;
 }
 
 .timeline-item--left {

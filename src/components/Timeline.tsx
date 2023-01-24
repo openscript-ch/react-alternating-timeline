@@ -43,7 +43,7 @@ export function Timeline(props: TimelineProps) {
     return itemsRef.current;
   }
 
-  useEffect(() => {
+  function positionTimelineItems() {
     const elements = Array.from(getRefMap().values());
 
     const { left, right } = resolveOffsets(offset ?? 0);
@@ -58,12 +58,14 @@ export function Timeline(props: TimelineProps) {
 
         element.style.top = `${rightHeight}px`;
         element.classList.add('timeline-item--right');
+        element.classList.remove('timeline-item--left');
         rightHeight += element.offsetHeight + (gap ?? 0);
       } else {
         rightHeight += getMarkerCompensationOffset(leftHeight, rightHeight);
 
         element.style.top = `${leftHeight}px`;
         element.classList.add('timeline-item--left');
+        element.classList.remove('timeline-item--right');
         leftHeight += element.offsetHeight + (gap ?? 0);
       }
     });
@@ -72,7 +74,13 @@ export function Timeline(props: TimelineProps) {
     if (timelineElement) {
       timelineElement.style.height = `${Math.max(leftHeight, rightHeight)}px`;
     }
-  }, [itemsRef]);
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', positionTimelineItems);
+    return () => window.removeEventListener('resize', positionTimelineItems);
+  }, []);
+  useEffect(positionTimelineItems, [itemsRef]);
 
   return (
     <div className={['timeline', className].join(' ')} ref={timelineRef}>
