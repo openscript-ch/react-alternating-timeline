@@ -50,7 +50,7 @@ export function Timeline(props: TimelineProps) {
   function positionTimelineItems() {
     const elements = Array.from(getRefMap().values());
 
-    const { left, right } = resolveOffsets(offset ?? 0);
+    const { left, right } = resolveOffsets(offset ?? 0, positioning);
     let leftHeight = left;
     let rightHeight = right;
 
