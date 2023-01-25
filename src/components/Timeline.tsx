@@ -2,9 +2,11 @@ import './Timeline.css';
 import { Key, useEffect, useRef } from 'react';
 import { PropsWithKey, TimelineItem, TimelineItemProps } from './TimelineItem';
 import { OffsetConfig, resolveOffsets } from '../models/offset';
+import { Positioning } from '../models/positioning';
 
 export type TimelineProps = {
   items: PropsWithKey<TimelineItemProps>[];
+  positioning: Positioning;
   gap?: number;
   offset?: OffsetConfig;
   minMarkerGap?: number;
@@ -14,6 +16,7 @@ export type TimelineProps = {
 };
 
 const defaultTimelineConfig: Partial<TimelineProps> = {
+  positioning: 'alternating',
   gap: 50,
   offset: 50,
   minMarkerGap: 50,
@@ -21,7 +24,7 @@ const defaultTimelineConfig: Partial<TimelineProps> = {
 };
 
 export function Timeline(props: TimelineProps) {
-  const { items, gap, offset, minMarkerGap, className, dateFormat, dateLocale } = { ...defaultTimelineConfig, ...props };
+  const { items, positioning, gap, offset, minMarkerGap, className, dateFormat, dateLocale } = { ...defaultTimelineConfig, ...props };
 
   const timelineRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<Map<Key, HTMLElement>>();
@@ -54,7 +57,7 @@ export function Timeline(props: TimelineProps) {
     elements.forEach((item) => {
       const element = item;
 
-      if (leftHeight > rightHeight) {
+      if ((positioning !== 'right' && leftHeight > rightHeight) || positioning === 'left') {
         leftHeight += getMinMarkerGapCompensation(leftHeight, rightHeight);
 
         element.style.top = `${rightHeight}px`;
@@ -84,7 +87,7 @@ export function Timeline(props: TimelineProps) {
   useEffect(positionTimelineItems, [itemsRef]);
 
   return (
-    <div className={['timeline', className].join(' ')} ref={timelineRef}>
+    <div className={['timeline', `timeline--${positioning}`, className].join(' ')} ref={timelineRef}>
       <div className="timeline__line" />
       {items.map((item) => (
         <TimelineItem

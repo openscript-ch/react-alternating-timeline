@@ -13,10 +13,12 @@
 }
 
 .timeline__line {
+  position: absolute;
   background-color: var(--timeline-line-color);
   width: var(--timeline-line-width);
   height: 100%;
-  margin-inline: auto;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .timeline-item {
@@ -98,4 +100,26 @@
 
 .timeline-item--left .timeline-item__marker {
   order: 1;
+}
+
+/* left positioning */
+.timeline--left .timeline__line {
+  left: 0;
+}
+
+.timeline--left .timeline-item--right {
+  left: 0;
+  width: 100%;
+}
+
+/* right positioning */
+.timeline--right .timeline__line {
+  right: 0;
+  left: unset;
+  transform: translateX(50%);
+}
+
+.timeline--right .timeline-item--left {
+  right: 0;
+  width: 100%;
 }
