@@ -3,11 +3,9 @@
   --timeline-line-color: black;
   --marker-line-width: var(--timeline-line-width);
   --marker-line-color: var(--timeline-line-color);
-  --marker-size: 1.5rem;
-  --marker-color: var(--timeline-line-color);
-  --marker-inner-size: 1rem;
-  --marker-inner-color: white;
-  --marker-radius: 50%;
+  --marker-mark-size: 1.5rem;
+  --marker-mark-color: var(--timeline-line-color);
+  --marker-mark-radius: 50%;
 
   position: relative;
 }
@@ -25,6 +23,7 @@
   position: absolute;
   width: 50%;
   display: flex;
+  align-items: flex-start;
   transition: top 0.1s;
 }
 
@@ -53,53 +52,38 @@
   margin-left: auto;
 }
 
-.timeline-item__marker {
+.timeline-marker {
   position: relative;
-  height: var(--marker-line-width);
   margin-top: 2rem;
   width: 5rem;
+}
+
+.timeline-marker__pointer {
+  flex: 1;
+  height: var(--marker-line-width);
   background-color: var(--marker-line-color);
 }
 
-.timeline-item__marker::after,
-.timeline-item__marker::before {
-  content: '';
-  border-radius: var(--marker-radius);
+.timeline-marker__mark {
+  border-radius: var(--marker-mark-radius);
+  width: var(--marker-mark-size);
+  height: var(--marker-mark-size);
+  background-color: var(--marker-mark-color);
   position: absolute;
+  top: 50%;
 }
 
-.timeline-item__marker::before {
-  width: var(--marker-size);
-  height: var(--marker-size);
-  background-color: var(--marker-color);
-  top: calc(-1 * var(--marker-size) / 2 + var(--marker-line-width) / 2);
+.timeline-item--left {
+  flex-direction: row-reverse;
 }
 
-.timeline-item__marker::after {
-  width: var(--marker-inner-size);
-  height: var(--marker-inner-size);
-  background-color: var(--marker-inner-color);
-  top: calc(-1 * var(--marker-inner-size) / 2 + var(--marker-line-width) / 2);
+.timeline-item--left .timeline-marker__mark {
+  right: 0;
+  transform: translate(50%, -50%);
 }
-
-.timeline-item--left .timeline-item__marker::before {
-  right: calc(-1 * var(--marker-size) / 2);
-}
-
-.timeline-item--left .timeline-item__marker::after {
-  right: calc(-1 * var(--marker-inner-size) / 2);
-}
-
-.timeline-item--right .timeline-item__marker::before {
-  left: calc(-1 * var(--marker-size) / 2);
-}
-
-.timeline-item--right .timeline-item__marker::after {
-  left: calc(-1 * var(--marker-inner-size) / 2);
-}
-
-.timeline-item--left .timeline-item__marker {
-  order: 1;
+.timeline-item--right .timeline-marker__mark {
+  left: 0;
+  transform: translate(-50%, -50%);
 }
 
 /* left positioning */
