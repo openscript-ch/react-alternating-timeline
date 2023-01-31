@@ -1,19 +1,20 @@
 :where(.timeline) {
-  --timeline-line-width: 0.2rem;
-  --timeline-line-color: black;
-  --marker-line-width: var(--timeline-line-width);
-  --marker-line-color: var(--timeline-line-color);
-  --marker-mark-size: 1.5rem;
-  --marker-mark-color: var(--timeline-line-color);
+  --line-width: 0.2rem;
+  --line-color: black;
+  --marker-mark-size: 1rem;
+  --marker-mark-color: var(--line-color);
   --marker-mark-radius: 50%;
+  --marker-offset: 2rem;
+  --pointer-height: 2rem;
+  --pointer-width: 1rem;
 
   position: relative;
 }
 
 .timeline__line {
   position: absolute;
-  background-color: var(--timeline-line-color);
-  width: var(--timeline-line-width);
+  background-color: var(--line-color);
+  width: var(--line-width);
   height: 100%;
   left: 50%;
   transform: translateX(-50%);
@@ -25,22 +26,41 @@
   display: flex;
   align-items: flex-start;
   transition: top 0.1s;
+  gap: 1rem;
 }
 
 .timeline-item--left {
   left: 0;
+  flex-direction: row-reverse;
 }
 
 .timeline-item--right {
   right: 0;
 }
 
+.timeline-item__marker {
+  border-radius: var(--marker-mark-radius);
+  width: var(--marker-mark-size);
+  height: var(--marker-mark-size);
+  background-color: var(--marker-mark-color);
+  margin-top: var(--marker-offset);
+}
+
+.timeline-item--left .timeline-item__marker {
+  transform: translate(50%, -50%);
+}
+.timeline-item--right .timeline-item__marker {
+  transform: translate(-50%, -50%);
+}
+
 .timeline-card {
+  background-color: white;
   border: 0.2rem solid black;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
 }
 
 .timeline-card img {
@@ -52,38 +72,23 @@
   margin-left: auto;
 }
 
-.timeline-marker {
-  position: relative;
-  margin-top: 2rem;
-  width: 5rem;
-}
-
-.timeline-marker__pointer {
-  flex: 1;
-  height: var(--marker-line-width);
-  background-color: var(--marker-line-color);
-}
-
-.timeline-marker__mark {
-  border-radius: var(--marker-mark-radius);
-  width: var(--marker-mark-size);
-  height: var(--marker-mark-size);
-  background-color: var(--marker-mark-color);
+.timeline-card__pointer {
+  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+  background-color: white;
+  top: var(--marker-offset);
+  width: var(--pointer-width);
+  height: var(--pointer-height);
+  transform: translate(100%, -50%);
   position: absolute;
-  top: 50%;
 }
 
-.timeline-item--left {
-  flex-direction: row-reverse;
-}
-
-.timeline-item--left .timeline-marker__mark {
+.timeline-item--left .timeline-card__pointer {
   right: 0;
-  transform: translate(50%, -50%);
 }
-.timeline-item--right .timeline-marker__mark {
+
+.timeline-item--right .timeline-card__pointer {
+  transform: scaleX(-1) translate(100%, -50%);
   left: 0;
-  transform: translate(-50%, -50%);
 }
 
 /* left positioning */

@@ -4,8 +4,8 @@
 }
 
 .styled-timeline {
-  --timeline-line-width: 2px;
-  --timeline-line-color: gray;
+  --line-width: 2px;
+  --line-color: gray;
   --marker-inner-color: hotpink;
   --marker-color: gray;
   --marker-size: 1.5rem;
@@ -18,7 +18,7 @@
   border: none;
   padding: 2rem;
   border-radius: 0.2rem;
-  box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.2);
+  filter: drop-shadow(2px 2px 5px rgb(0, 0, 0, 0.2));
 }
 
 .styled-timeline .timeline-card__title {
