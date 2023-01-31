@@ -1,4 +1,4 @@
-import { forwardRef, Key, PropsWithChildren } from 'react';
+import { forwardRef, Key, PropsWithChildren, ReactElement } from 'react';
 import { format } from 'date-fns';
 
 export type PropsWithKey<T> = T & {
@@ -11,15 +11,17 @@ export type TimelineItemProps = PropsWithChildren<{
   dateFormat?: string;
   dateLocale?: Locale;
   title: string;
+  customMarker?: ReactElement;
+  customPointer?: ReactElement;
 }>;
 
 export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(
-  ({ className, title, date, children, dateFormat, dateLocale }, ref) => {
+  ({ className, title, date, children, dateFormat, dateLocale, customMarker, customPointer }, ref) => {
     return (
       <div ref={ref} className={['timeline-item', className].join(' ')}>
-        <div className="timeline-item__marker" />
+        <div className={['timeline-item__marker', customMarker && 'timeline-item__marker--custom'].join(' ')}>{customMarker}</div>
         <div className="timeline-card">
-          <div className="timeline-card__pointer" />
+          <div className={['timeline-card__pointer', customPointer && 'timeline-card__pointer--custom'].join(' ')}>{customPointer}</div>
           <p className="timeline-card__date">{date instanceof Date ? format(date, dateFormat ?? 'P', { locale: dateLocale }) : date}</p>
           <p className="timeline-card__title">{title}</p>
           {children}

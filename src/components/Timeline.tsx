@@ -1,5 +1,5 @@
 import './Timeline.css';
-import { Key, useEffect, useRef } from 'react';
+import { Key, ReactElement, useEffect, useRef } from 'react';
 import { PropsWithKey, TimelineItem, TimelineItemProps } from './TimelineItem';
 import { OffsetConfig, resolveOffsets } from '../models/offset';
 import { Positioning } from '../models/positioning';
@@ -12,6 +12,8 @@ export type TimelineProps = {
   minMarkerGap?: number;
   dateFormat?: string;
   dateLocale?: Locale;
+  customMarker?: ReactElement;
+  customPointer?: ReactElement;
   className?: string;
 };
 
@@ -19,12 +21,15 @@ const defaultTimelineConfig: Partial<TimelineProps> = {
   positioning: 'alternating',
   gap: 50,
   offset: 50,
-  minMarkerGap: 50,
+  minMarkerGap: 100,
   dateFormat: 'P',
 };
 
 export function Timeline(props: TimelineProps) {
-  const { items, positioning, gap, offset, minMarkerGap, className, dateFormat, dateLocale } = { ...defaultTimelineConfig, ...props };
+  const { items, positioning, gap, offset, minMarkerGap, className, dateFormat, dateLocale, customMarker, customPointer } = {
+    ...defaultTimelineConfig,
+    ...props,
+  };
 
   const timelineRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<Map<Key, HTMLElement>>();
@@ -93,6 +98,8 @@ export function Timeline(props: TimelineProps) {
         <TimelineItem
           dateFormat={dateFormat}
           dateLocale={dateLocale}
+          customMarker={customMarker}
+          customPointer={customPointer}
           {...item}
           ref={(node) => {
             const map = getRefMap();

@@ -44,11 +44,14 @@
 }
 
 .timeline-item__marker {
+  margin-top: var(--marker-offset);
+}
+
+.timeline-item__marker:not(.timeline-item__marker--custom) {
   border-radius: var(--marker-radius);
   width: var(--marker-size);
   height: var(--marker-size);
   background-color: var(--marker-color);
-  margin-top: var(--marker-offset);
 }
 
 .timeline-item--left .timeline-item__marker {
@@ -83,13 +86,16 @@
 }
 
 .timeline-card__pointer {
-  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
-  background-color: var(--card-background);
   top: var(--marker-offset);
-  width: var(--pointer-width);
-  height: var(--pointer-height);
   transform: translate(100%, -50%);
   position: absolute;
+}
+
+.timeline-card__pointer:not(.timeline-card__pointer--custom) {
+  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+  background-color: var(--card-background);
+  width: var(--pointer-width);
+  height: var(--pointer-height);
 }
 
 .timeline-item--left .timeline-card__pointer {
