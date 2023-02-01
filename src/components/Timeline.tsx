@@ -3,6 +3,7 @@ import { Key, ReactElement, useEffect, useRef } from 'react';
 import { PropsWithKey, TimelineItem, TimelineItemProps } from './TimelineItem';
 import { OffsetConfig, resolveOffsets } from '../models/offset';
 import { Positioning } from '../models/positioning';
+import { convertToCssVariable, StyleConfig } from '../models/style';
 
 export type TimelineProps = {
   items: PropsWithKey<TimelineItemProps>[];
@@ -14,6 +15,7 @@ export type TimelineProps = {
   dateLocale?: Locale;
   customMarker?: ReactElement;
   customPointer?: ReactElement;
+  styleConfig?: StyleConfig;
   className?: string;
 };
 
@@ -26,7 +28,7 @@ const defaultTimelineConfig: Partial<TimelineProps> = {
 };
 
 export function Timeline(props: TimelineProps) {
-  const { items, positioning, gap, offset, minMarkerGap, className, dateFormat, dateLocale, customMarker, customPointer } = {
+  const { items, positioning, gap, offset, minMarkerGap, className, dateFormat, dateLocale, customMarker, customPointer, styleConfig } = {
     ...defaultTimelineConfig,
     ...props,
   };
@@ -84,6 +86,11 @@ export function Timeline(props: TimelineProps) {
       timelineElement.style.height = `${Math.max(leftHeight, rightHeight)}px`;
     }
   }
+
+  useEffect(() => {
+    if (!styleConfig) return;
+    Object.entries(convertToCssVariable(styleConfig)).forEach((prop) => timelineRef.current?.style.setProperty(...prop));
+  }, [styleConfig]);
 
   useEffect(() => {
     window.addEventListener('resize', positionTimelineItems);
