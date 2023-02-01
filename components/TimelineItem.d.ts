@@ -1,4 +1,4 @@
-import { Key, PropsWithChildren } from 'react';
+import { Key, PropsWithChildren, ReactElement } from 'react';
 export declare type PropsWithKey<T> = T & {
     key: Key;
 };
@@ -8,6 +8,8 @@ export declare type TimelineItemProps = PropsWithChildren<{
     dateFormat?: string;
     dateLocale?: Locale;
     title: string;
+    customMarker?: ReactElement;
+    customPointer?: ReactElement;
 }>;
 export declare const TimelineItem: import("react").ForwardRefExoticComponent<{
     className?: string | undefined;
@@ -15,6 +17,8 @@ export declare const TimelineItem: import("react").ForwardRefExoticComponent<{
     dateFormat?: string | undefined;
     dateLocale?: Locale | undefined;
     title: string;
+    customMarker?: ReactElement<any, string | import("react").JSXElementConstructor<any>> | undefined;
+    customPointer?: ReactElement<any, string | import("react").JSXElementConstructor<any>> | undefined;
 } & {
     children?: import("react").ReactNode;
 } & import("react").RefAttributes<HTMLDivElement>>;
