@@ -4,7 +4,6 @@
   --marker-size: 1rem;
   --marker-color: var(--line-color);
   --marker-radius: 50%;
-  --marker-offset: 3rem;
   --pointer-height: 2rem;
   --pointer-width: 1rem;
   --card-background: whitesmoke;
@@ -41,10 +40,6 @@
 
 .timeline-item--right {
   right: 0;
-}
-
-.timeline-item__marker {
-  margin-top: var(--marker-offset);
 }
 
 .timeline-item__marker:not(.timeline-item__marker--custom) {
@@ -86,7 +81,6 @@
 }
 
 .timeline-card__pointer {
-  top: var(--marker-offset);
   transform: translate(100%, -50%);
   position: absolute;
 }

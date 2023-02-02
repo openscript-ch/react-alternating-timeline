@@ -9,7 +9,6 @@ export type StyleConfig = {
     size?: string;
     color?: string;
     radius?: string;
-    offset?: string;
   };
   pointer?: {
     height?: string;
