@@ -2,6 +2,11 @@ import { Key, PropsWithChildren, ReactElement } from 'react';
 export declare type PropsWithKey<T> = T & {
     key: Key;
 };
+export declare type TimelineItemRefs = {
+    pointer: HTMLDivElement | null;
+    item: HTMLDivElement | null;
+    marker: HTMLDivElement | null;
+};
 export declare type TimelineItemProps = PropsWithChildren<{
     className?: string;
     date: Date | string;
@@ -21,4 +26,4 @@ export declare const TimelineItem: import("react").ForwardRefExoticComponent<{
     customPointer?: ReactElement<any, string | import("react").JSXElementConstructor<any>> | undefined;
 } & {
     children?: import("react").ReactNode;
-} & import("react").RefAttributes<HTMLDivElement>>;
+} & import("react").RefAttributes<TimelineItemRefs>>;

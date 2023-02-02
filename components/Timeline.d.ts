@@ -9,6 +9,7 @@ export declare type TimelineProps = {
     gap?: number;
     offset?: OffsetConfig;
     minMarkerGap?: number;
+    defaultPointerOffset?: number;
     dateFormat?: string;
     dateLocale?: Locale;
     customMarker?: ReactElement;
