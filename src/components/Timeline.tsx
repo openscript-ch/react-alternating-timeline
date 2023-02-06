@@ -7,7 +7,7 @@ import { convertToCssVariable, StyleConfig } from '../models/style';
 
 export type TimelineProps = {
   items: TimelineItemsProps;
-  positioning: Positioning;
+  positioning?: Positioning;
   gap?: number;
   offset?: OffsetConfig;
   minMarkerGap?: number;
@@ -20,7 +20,7 @@ export type TimelineProps = {
   className?: string;
 };
 
-const defaultTimelineConfig: Partial<TimelineProps> = {
+export const defaultTimelineConfig: Partial<TimelineProps> = {
   positioning: 'alternating',
   gap: 50,
   offset: 50,
@@ -72,7 +72,7 @@ export function Timeline(props: TimelineProps) {
   function positionTimelineItems() {
     const elements = Array.from(getRefMap().values());
 
-    const { left, right } = resolveOffsets(offset ?? 0, positioning);
+    const { left, right } = resolveOffsets(offset ?? 0, positioning ?? 'alternating');
     let leftHeight = left;
     let rightHeight = right;
 
