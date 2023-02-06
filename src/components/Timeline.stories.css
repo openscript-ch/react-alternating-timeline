@@ -1,26 +1,25 @@
-.styled-timeline * {
+.timeline--styled :where(*) {
   margin: 0;
   padding: 0;
 }
 
-.styled-timeline {
-  --line-width: 2px;
-  --line-color: gray;
-  --marker-color: gray;
-  --card-background: white;
-  --card-shadow: 2px 2px 5px rgb(0, 0, 0, 0.1);
-  --card-padding: 2rem;
-
+.timeline--styled {
   font-family: sans-serif;
   line-height: 1.4;
 }
 
-.styled-timeline .timeline-card__title {
+.timeline--styled .timeline-card__title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-weight: bold;
 }
 
-.styled-timeline img {
+.timeline--styled img {
   margin-top: 1rem;
+}
+
+.pointy {
+  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+  background-color: red;
+  height: 1rem;
+  width: 1rem;
 }

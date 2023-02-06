@@ -1,6 +1,8 @@
+import './Timeline.stories.css';
 import { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react';
 import { defaultTimelineConfig, Timeline } from './Timeline';
+import { TimelineItemsProps } from './TimelineItem';
 
 export default {
   component: Timeline,
@@ -13,7 +15,7 @@ export default {
   ],
 } as Meta<typeof Timeline>;
 
-const items = [
+const items: TimelineItemsProps = [
   {
     key: 1,
     title: '1 First date',
@@ -154,3 +156,109 @@ const items = [
 ];
 
 export const Basic: StoryObj<typeof Timeline> = { args: { items, ...defaultTimelineConfig } };
+
+export const SpacingOptions: StoryObj<typeof Timeline> = {
+  args: {
+    items,
+    ...defaultTimelineConfig,
+    gap: 100,
+    minMarkerGap: 150,
+    offset: { left: 150, right: 50 },
+    defaultPointerOffset: 60,
+  },
+};
+
+export const LeftPositioning: StoryObj<typeof Timeline> = { args: { items, ...defaultTimelineConfig, positioning: 'left' } };
+
+export const RightPositioning: StoryObj<typeof Timeline> = { args: { items, ...defaultTimelineConfig, positioning: 'right' } };
+
+export const CustomStyle: StoryObj<typeof Timeline> = {
+  args: {
+    items,
+    ...defaultTimelineConfig,
+    styleConfig: {
+      card: {
+        padding: '2rem',
+        background: 'white',
+        radius: '.2rem',
+        shadow: '.1rem .1rem .5rem rgb(0,0,0,0.1)',
+        offset: '2rem',
+      },
+      line: {
+        width: '.1rem',
+        color: 'gray',
+      },
+      marker: {
+        color: 'hotpink',
+        radius: '.2rem',
+        size: '1.2rem',
+      },
+      pointer: {
+        width: '2rem',
+        height: '2rem',
+      },
+    },
+  },
+};
+
+export const CustomCSS: StoryObj<typeof Timeline> = {
+  args: {
+    items,
+    ...defaultTimelineConfig,
+    className: 'timeline--styled',
+    styleConfig: {
+      card: {
+        padding: '2rem',
+        background: 'white',
+        radius: '.2rem',
+        shadow: '.1rem .1rem .5rem rgb(0,0,0,0.1)',
+      },
+      line: {
+        width: '.1rem',
+        color: 'gray',
+      },
+    },
+  },
+};
+
+export const CustomContent: StoryObj<typeof Timeline> = {
+  args: {
+    items: [
+      {
+        key: '1',
+        date: new Date(),
+        title: 'Lorem, ipsum dolor.',
+        children: (
+          <Fragment>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis voluptatum at deleniti ut et incidunt eos ab.
+              Cumque, atque. <a href="https://google.com">Go here!</a>
+            </p>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/1200px-SMPTE_Color_Bars.svg.png"
+              alt="test"
+            />
+            <p />
+            <button type="button">Learn more &gt;</button>
+          </Fragment>
+        ),
+      },
+    ],
+  },
+};
+
+const customItems = [...items];
+customItems[3] = {
+  ...items[3],
+  customMarker: <span style={{ fontSize: '2rem' }}>😵‍💫</span>,
+  customPointer: <div className="pointy" style={{ backgroundColor: 'green' }} />,
+};
+
+export const CustomMarkerAndPointer: StoryObj<typeof Timeline> = {
+  args: {
+    items: customItems,
+    ...defaultTimelineConfig,
+    customMarker: <span style={{ fontSize: '2rem' }}>🔥</span>,
+    customPointer: <div className="pointy" />,
+  },
+};
