@@ -1,18 +1,20 @@
 import { forwardRef, Key, PropsWithChildren, ReactElement, useRef, useImperativeHandle } from 'react';
 import { format } from 'date-fns';
 
-export type PropsWithKey<T> = T & {
+type PropsWithKey<T> = T & {
   key: Key;
 };
 
 export type TimelineItemRefs = { pointer: HTMLDivElement | null; item: HTMLDivElement | null; marker: HTMLDivElement | null };
 
+export type TimelineItemsProps = PropsWithKey<TimelineItemProps>[];
+
 export type TimelineItemProps = PropsWithChildren<{
   className?: string;
+  title?: string;
   date: Date | string;
   dateFormat?: string;
   dateLocale?: Locale;
-  title: string;
   customMarker?: ReactElement;
   customPointer?: ReactElement;
 }>;
@@ -39,7 +41,7 @@ export const TimelineItem = forwardRef<TimelineItemRefs, TimelineItemProps>(
             {customPointer}
           </div>
           <p className="timeline-card__date">{date instanceof Date ? format(date, dateFormat ?? 'P', { locale: dateLocale }) : date}</p>
-          <p className="timeline-card__title">{title}</p>
+          {title && <p className="timeline-card__title">{title}</p>}
           {children}
         </div>
       </div>

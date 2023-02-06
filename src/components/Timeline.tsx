@@ -1,12 +1,12 @@
 import './Timeline.css';
 import { Key, ReactElement, useEffect, useRef } from 'react';
-import { PropsWithKey, TimelineItem, TimelineItemProps, TimelineItemRefs } from './TimelineItem';
+import { TimelineItem, TimelineItemRefs, TimelineItemsProps } from './TimelineItem';
 import { OffsetConfig, resolveOffsets } from '../models/offset';
 import { Positioning } from '../models/positioning';
 import { convertToCssVariable, StyleConfig } from '../models/style';
 
 export type TimelineProps = {
-  items: PropsWithKey<TimelineItemProps>[];
+  items: TimelineItemsProps;
   positioning: Positioning;
   gap?: number;
   offset?: OffsetConfig;
