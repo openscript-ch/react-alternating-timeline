@@ -50,10 +50,7 @@ const items: TimelineItemsProps = [
         numquam tempore asperiores recusandae porro, odit qui. Fugiat fuga obcaecati architecto? Earum laborum itaque maiores eveniet quam?
         Numquam, dolorem cumque laboriosam natus perspiciatis quo nam ea exercitationem illum veniam aspernatur, commodi pariatur, eligendi
         maiores et porro incidunt optio molestias nisi voluptatibus quidem mollitia. Cum illo fugiat iste dolorum voluptatibus debitis?
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/1200px-SMPTE_Color_Bars.svg.png"
-          alt="test"
-        />
+        <img src="../../docs/example-image.jpg" alt="test" />
       </Fragment>
     ),
   },
@@ -86,7 +83,7 @@ const items: TimelineItemsProps = [
         dolores provident ea velit quam omnis pariatur officiis. Eos fugiat libero a laborum quo eum, eaque quis, impedit cupiditate
         perspiciatis aliquam repudiandae eligendi voluptas. Dolore sed, numquam eveniet reprehenderit minus id rerum possimus itaque
         voluptate temporibus atque earum soluta deserunt provident necessitatibus? Perspiciatis, natus doloribus dolores sequi provident
-        corporis quae soluta libero aut esse numquam consequuntur optio eius reiciendis!
+        corporis quae soluta libero aut esse numquam consequuntur optio eius reiciendis!{' '}
       </Fragment>
     ),
   },
@@ -143,7 +140,7 @@ const items: TimelineItemsProps = [
   },
   {
     key: 10,
-    title: '10 Date with image',
+    title: '10 Christmas',
     date: new Date(),
     children: (
       <Fragment>
@@ -234,10 +231,7 @@ export const CustomContent: StoryObj<typeof Timeline> = {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis voluptatum at deleniti ut et incidunt eos ab.
               Cumque, atque. <a href="https://google.com">Go here!</a>
             </p>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/1200px-SMPTE_Color_Bars.svg.png"
-              alt="test"
-            />
+            <img src="../../docs/example-image.jpg" alt="test" />
             <p />
             <button type="button">Learn more &gt;</button>
           </Fragment>
