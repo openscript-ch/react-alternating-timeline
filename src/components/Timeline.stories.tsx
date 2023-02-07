@@ -50,7 +50,7 @@ const items: TimelineItemsProps = [
         numquam tempore asperiores recusandae porro, odit qui. Fugiat fuga obcaecati architecto? Earum laborum itaque maiores eveniet quam?
         Numquam, dolorem cumque laboriosam natus perspiciatis quo nam ea exercitationem illum veniam aspernatur, commodi pariatur, eligendi
         maiores et porro incidunt optio molestias nisi voluptatibus quidem mollitia. Cum illo fugiat iste dolorum voluptatibus debitis?
-        <img src="../docs/example-image.jpg" alt="test" />
+        <img src="/example-image.jpg" alt="test" />
       </Fragment>
     ),
   },
@@ -231,7 +231,7 @@ export const CustomContent: StoryObj<typeof Timeline> = {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis voluptatum at deleniti ut et incidunt eos ab.
               Cumque, atque. <a href="https://google.com">Go here!</a>
             </p>
-            <img src="../docs/example-image.jpg" alt="test" />
+            <img src="/example-image.jpg" alt="test" />
             <p />
             <button type="button">Learn more &gt;</button>
           </Fragment>
