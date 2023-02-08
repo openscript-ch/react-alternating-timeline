@@ -1,10 +1,10 @@
 import './Timeline.stories.css';
 import { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react';
-import { defaultTimelineConfig, Timeline } from './Timeline';
-import { TimelineItemsProps } from './TimelineItem';
+import { Timeline, TimelineItemsProps } from '..';
+import { defaultTimelineConfig } from './Timeline';
 
-export default {
+const meta: Meta<typeof Timeline> = {
   component: Timeline,
   decorators: [
     (Story) => (
@@ -13,7 +13,9 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Timeline>;
+};
+
+export default meta;
 
 const items: TimelineItemsProps = [
   {
