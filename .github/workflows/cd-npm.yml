@@ -28,6 +28,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Post build
+        run: npm run postbuild
+
       - name: Publish package on npmjs.org
         run: npm publish ./storybook-static --access public
         env:
