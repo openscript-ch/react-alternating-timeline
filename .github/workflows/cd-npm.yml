@@ -3,7 +3,7 @@ name: Continuous deployment (NPM)
 on:
   push:
     tags:
-      - v*
+      - '**'
 
 jobs:
   build-and-deploy:
@@ -27,12 +27,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create Github release
-        run: npm run release:create-github-release
-        env:
-          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
       - name: Publish package on npmjs.org
-        run: npm publish ./dist --access public
+        run: npm publish ./storybook-static --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
