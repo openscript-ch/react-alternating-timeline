@@ -29,6 +29,6 @@ jobs:
         run: npm run build
 
       - name: Publish package on npmjs.org
-        run: npm publish ./storybook-static --access public
+        run: npm publish ./dist --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
