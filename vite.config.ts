@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import packageJson from './package.json';
 
 const makeExternalPredicate = (externals: string[]) => {
@@ -33,5 +34,6 @@ export default defineConfig({
       exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
     }),
     dts(),
+    cssInjectedByJsPlugin(),
   ],
 });
