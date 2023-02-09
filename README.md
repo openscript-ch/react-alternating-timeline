@@ -68,16 +68,16 @@ The available properties of the `Timeline` component:
 
 An array of the following properties:
 
-| Property         | Type                | Description                                                                      |
-| :--------------- | :------------------ | :------------------------------------------------------------------------------- |
-| `key`            | `Key`               | Unique key for each item                                                         |
-| `title?`         | `string`            | Optional title paragraph displayed bold                                          |
-| `date`           | `Date    \| string` | Date either being formatted according to provided format or passed as a `string` |
-| `children?`      | `ReactNode`         | Pass custom content as `children` to the component                               |
-| `dateFormat?`    | `string`            | Overwriting `dateFormat` property of parent `Timeline`                           |
-| `dateLocale?`    | `string`            | Overwriting `dateLocale` property of parent `Timeline`                           |
-| `customMarker?`  | `ReactElement`      | Overwriting `customMarker` property of parent `Timeline`                         |
-| `customPointer?` | `ReactElement`      | Overwriting `customPointer` property of parent `Timeline`                        |
+| Property         | Type             | Description                                                                      |
+| :--------------- | :--------------- | :------------------------------------------------------------------------------- |
+| `key`            | `Key`            | Unique key for each item                                                         |
+| `title?`         | `string`         | Optional title paragraph displayed bold                                          |
+| `date`           | `Date \| string` | Date either being formatted according to provided format or passed as a `string` |
+| `children?`      | `ReactNode`      | Pass custom content as `children` to the component                               |
+| `dateFormat?`    | `string`         | Overwriting `dateFormat` property of parent `Timeline`                           |
+| `dateLocale?`    | `string`         | Overwriting `dateLocale` property of parent `Timeline`                           |
+| `customMarker?`  | `ReactElement`   | Overwriting `customMarker` property of parent `Timeline`                         |
+| `customPointer?` | `ReactElement`   | Overwriting `customPointer` property of parent `Timeline`                        |
 
 ### StyleConfig
 
@@ -131,4 +131,4 @@ The style can either be passed as a javascript object...
 
 ## Demo
 
-View a full demo of component as storybook: [Storybook](https://openscript-ch.github.io/react-alternating-timeline/) 📗
+View a full demo of component as storybook: [Storybook](https://openscript-ch.github.io/react-alternating-timeline/) 📚
