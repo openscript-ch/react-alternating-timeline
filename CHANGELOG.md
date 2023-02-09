@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/openscript-ch/react-alternating-timeline/compare/v1.0.0...v1.0.1) (2023-02-09)
+
+
+### Bug Fixes
+
+* inject css into js build ([95d6821](https://github.com/openscript-ch/react-alternating-timeline/commit/95d682174bf600e468b2ce9f54f3330b7912e278))
+
 ## 1.0.0 (2023-02-08)
 
 
