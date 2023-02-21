@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
@@ -30,6 +30,16 @@ export default defineConfig({
           react: 'React',
         },
       },
+    },
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['testSetup.ts'],
+    coverage: {
+      exclude: ['**/*.stories.tsx'],
+      include: ['src/**'],
+      provider: 'istanbul',
+      all: true,
     },
   },
   plugins: [
