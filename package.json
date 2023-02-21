@@ -46,7 +46,7 @@
     "start": "storybook dev -p 6007 --ci",
     "storybook": "storybook dev -p 6007 --ci",
     "test": "vitest",
-    "coverage": "vitest --coverage",
+    "test:coverage": "vitest --coverage",
     "upgrade-interactive": "npm-check -u"
   },
   "peerDependencies": {
@@ -71,6 +71,7 @@
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "@vitejs/plugin-react": "^3.0.0",
+    "@vitest/coverage-istanbul": "^0.28.5",
     "babel-loader": "^9.1.0",
     "date-fns": "^2.29.3",
     "eslint": "^8.34.0",
