@@ -36,7 +36,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['testSetup.ts'],
     coverage: {
+      exclude: ['**/*.stories.tsx'],
+      include: ['src/**'],
       provider: 'istanbul',
+      all: true,
     },
   },
   plugins: [
