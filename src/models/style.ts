@@ -7,8 +7,8 @@ export type StyleConfig = {
   };
   gap?: string;
   offset?: {
-    left: string;
-    right: string;
+    left?: string;
+    right?: string;
   };
   marker?: {
     size?: string;

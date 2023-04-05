@@ -49,20 +49,17 @@ const items: TimelineItemsProps = [
 
 The available properties of the `Timeline` component:
 
-| Property                | Type                                          | Description                                                                                                                                   | Default         |
-| :---------------------- | :-------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- |
-| `items`                 | [`TimelineItemsProps`](#timelineitemsprops)   | Array of timeline items                                                                                                                       |                 |
-| `positioning?`          | `'alternating' \| 'left' \| 'right'`          | How the items should be positioned relative to the timeline                                                                                   | `'alternating'` |
-| `gap?`                  | `number`                                      | The horizontal gap between timeline items                                                                                                     | 50 (`px`)       |
-| `offset?`               | `{ left?: number; right?: number } \| number` | Offset left or right items from the top (default offset when passing just a `number`: `right`)                                                | 50 (`px`)       |
-| `minMarkerGap?`         | `number`                                      | The minimum gap markers will have between each other                                                                                          | 50 (`px`)       |
-| `defaultPointerOffset?` | `number`                                      | The regular top offset pointers have to their item card                                                                                       | 40 (`px`)       |
-| `dateLocal?`            | `Local`                                       | Date locale                                                                                                                                   |                 |
-| `dateFormat?`           | `string`                                      | Specific date format according to date-fns [specification](https://date-fns.org/v2.29.3/docs/format). Ignored when passing a `string` as date | `'P'`           |
-| `customMarker?`         | `ReactElement`                                | Custom maker element replacing the default                                                                                                    |                 |
-| `customPointer?`        | `ReactElement`                                | Custom pointer element replacing the default                                                                                                  |                 |
-| `styleConfig?`          | [`StyleConfig`](#styleconfig)                 | Style config object for customizing timeline by setting css custom properties                                                                 |                 |
-| `className?`            | `string`                                      | Additional class name                                                                                                                         |                 |
+| Property         | Type                                        | Description                                                                                                                                   | Default         |
+| :--------------- | :------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- |
+| `items`          | [`TimelineItemsProps`](#timelineitemsprops) | Array of timeline items                                                                                                                       |                 |
+| `positioning?`   | `'alternating' \| 'left' \| 'right'`        | How the items should be positioned relative to the timeline                                                                                   | `'alternating'` |
+| `minMarkerGap?`  | `number`                                    | The minimum gap markers will have between each other                                                                                          | 50 (`px`)       |
+| `dateLocal?`     | `Local`                                     | Date locale                                                                                                                                   |                 |
+| `dateFormat?`    | `string`                                    | Specific date format according to date-fns [specification](https://date-fns.org/v2.29.3/docs/format). Ignored when passing a `string` as date | `'P'`           |
+| `customMarker?`  | `ReactElement`                              | Custom maker element replacing the default                                                                                                    |                 |
+| `customPointer?` | `ReactElement`                              | Custom pointer element replacing the default                                                                                                  |                 |
+| `styleConfig?`   | [`StyleConfig`](#styleconfig)               | Style config object for customizing timeline by setting css custom properties                                                                 |                 |
+| `className?`     | `string`                                    | Additional class name                                                                                                                         |                 |
 
 ### TimelineItemsProps
 
@@ -89,6 +86,11 @@ The style can either be passed as a javascript object...
     width?: string;
     color?: string;
   };
+  gap?: string;
+  offset?: {
+    left?: string;
+    right?: string;
+  };
   marker?: {
     size?: string;
     color?: string;
@@ -97,6 +99,7 @@ The style can either be passed as a javascript object...
   pointer?: {
     height?: string;
     width?: string;
+    offset?: string;
   };
   card?: {
     background?: string;
@@ -119,11 +122,15 @@ The style can either be passed as a javascript object...
   --marker-radius: 50%;
   --pointer-height: 2rem;
   --pointer-width: 1rem;
+  --pointer-offset: 5rem;
   --card-background: whitesmoke;
   --card-radius: 0.1rem;
   --card-offset: 1rem;
   --card-shadow: unset;
   --card-padding: 1rem;
+  --gap: 1rem;
+  --offset-left: 0;
+  --offset-right: 5rem;
 }
 ```
 
