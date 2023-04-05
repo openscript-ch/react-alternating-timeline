@@ -5,6 +5,11 @@ export type StyleConfig = {
     width?: string;
     color?: string;
   };
+  gap?: string;
+  offset?: {
+    left: string;
+    right: string;
+  };
   marker?: {
     size?: string;
     color?: string;
@@ -13,6 +18,7 @@ export type StyleConfig = {
   pointer?: {
     height?: string;
     width?: string;
+    offset?: string;
   };
   card?: {
     background?: string;
