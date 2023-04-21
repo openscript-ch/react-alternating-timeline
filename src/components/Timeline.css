@@ -6,40 +6,57 @@
   --marker-radius: 50%;
   --pointer-height: 2rem;
   --pointer-width: 1rem;
+  --pointer-offset: 5rem;
   --card-background: whitesmoke;
   --card-radius: 0.1rem;
   --card-offset: 1rem;
   --card-shadow: unset;
   --card-padding: 1rem;
+  --gap: 1rem;
+  --offset-left: 0;
+  --offset-right: 5rem;
 
   position: relative;
 }
 
+.timeline {
+  display: flex;
+}
+
 .timeline__line {
-  position: absolute;
   background-color: var(--line-color);
-  width: var(--line-width);
-  height: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  min-width: var(--line-width);
+}
+
+.timeline__items-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  flex: 1;
+}
+
+.timeline__items-container--left {
+  margin-top: var(--offset-left);
+}
+
+.timeline__items-container--right {
+  margin-top: var(--offset-right);
 }
 
 .timeline-item {
-  position: absolute;
-  width: 50%;
+  position: relative;
   display: flex;
   align-items: flex-start;
   transition: top 0.1s;
   gap: var(--card-offset);
 }
 
-.timeline-item--left {
-  left: 0;
+.timeline__items-container--left .timeline-item {
   flex-direction: row-reverse;
 }
 
-.timeline-item--right {
-  right: 0;
+.timeline-item__marker {
+  margin-top: var(--pointer-offset);
 }
 
 .timeline-item__marker:not(.timeline-item__marker--custom) {
@@ -49,11 +66,11 @@
   background-color: var(--marker-color);
 }
 
-.timeline-item--left .timeline-item__marker {
-  transform: translate(50%, -50%);
+.timeline__items-container--left .timeline-item .timeline-item__marker {
+  transform: translate(calc(50% + var(--line-width) / 2), -50%);
 }
-.timeline-item--right .timeline-item__marker {
-  transform: translate(-50%, -50%);
+.timeline__items-container--right .timeline-item .timeline-item__marker {
+  transform: translate(calc(-50% - var(--line-width) / 2), -50%);
 }
 
 .timeline-card {
@@ -81,8 +98,8 @@
 }
 
 .timeline-card__pointer {
-  transform: translate(100%, -50%);
   position: absolute;
+  top: var(--pointer-offset);
 }
 
 .timeline-card__pointer:not(.timeline-card__pointer--custom) {
@@ -92,33 +109,21 @@
   height: var(--pointer-height);
 }
 
-.timeline-item--left .timeline-card__pointer {
+.timeline__items-container--left .timeline-item .timeline-card__pointer {
   right: 0;
+  transform: translate(100%, -50%);
 }
 
-.timeline-item--right .timeline-card__pointer {
+.timeline__items-container--right .timeline-item .timeline-card__pointer {
   transform: scaleX(-1) translate(100%, -50%);
   left: 0;
 }
 
-/* left positioning */
-.timeline--left .timeline__line {
-  left: 0;
+/* one sided positioning */
+.timeline--left .timeline__items-container--left {
+  flex: 0;
 }
 
-.timeline--left .timeline-item--right {
-  left: 0;
-  width: 100%;
-}
-
-/* right positioning */
-.timeline--right .timeline__line {
-  right: 0;
-  left: unset;
-  transform: translateX(50%);
-}
-
-.timeline--right .timeline-item--left {
-  right: 0;
-  width: 100%;
+.timeline--right .timeline__items-container--right {
+  flex: 0;
 }

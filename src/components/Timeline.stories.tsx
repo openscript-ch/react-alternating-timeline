@@ -160,10 +160,17 @@ export const SpacingOptions: StoryObj<typeof Timeline> = {
   args: {
     items,
     ...defaultTimelineConfig,
-    gap: 100,
+    styleConfig: {
+      gap: '5rem',
+      offset: {
+        left: '10rem',
+        right: '3rem',
+      },
+      pointer: {
+        offset: '4rem',
+      },
+    },
     minMarkerGap: 150,
-    offset: { left: 150, right: 50 },
-    defaultPointerOffset: 60,
   },
 };
 

@@ -1,17 +1,13 @@
 import './Timeline.css';
 import { Key, ReactElement, useEffect, useRef } from 'react';
 import { TimelineItem, TimelineItemRefs, TimelineItemsProps } from './TimelineItem';
-import { OffsetConfig, resolveOffsets } from '../models/offset';
 import { Positioning } from '../models/positioning';
 import { convertToCssVariable, StyleConfig } from '../models/style';
 
 export type TimelineProps = {
   items: TimelineItemsProps;
   positioning?: Positioning;
-  gap?: number;
-  offset?: OffsetConfig;
   minMarkerGap?: number;
-  defaultPointerOffset?: number;
   dateFormat?: string;
   dateLocale?: Locale;
   customMarker?: ReactElement;
@@ -22,33 +18,19 @@ export type TimelineProps = {
 
 export const defaultTimelineConfig: Partial<TimelineProps> = {
   positioning: 'alternating',
-  gap: 50,
-  offset: 50,
   minMarkerGap: 50,
-  defaultPointerOffset: 40,
   dateFormat: 'P',
 };
 
 export function Timeline(props: TimelineProps) {
-  const {
-    items,
-    positioning,
-    gap,
-    offset,
-    minMarkerGap,
-    defaultPointerOffset,
-    className,
-    dateFormat,
-    dateLocale,
-    customMarker,
-    customPointer,
-    styleConfig,
-  } = {
+  const { items, positioning, minMarkerGap, className, dateFormat, dateLocale, customMarker, customPointer, styleConfig } = {
     ...defaultTimelineConfig,
     ...props,
   };
 
   const timelineRef = useRef<HTMLDivElement>(null);
+  const leftContainer = useRef<HTMLDivElement>(null);
+  const rightContainer = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<Map<Key, TimelineItemRefs>>();
 
   function getRefMap() {
@@ -72,11 +54,13 @@ export function Timeline(props: TimelineProps) {
   function positionTimelineItems() {
     const elements = Array.from(getRefMap().values());
 
-    const { left, right } = resolveOffsets(offset ?? 0, positioning ?? 'alternating');
-    let leftHeight = left;
-    let rightHeight = right;
+    if (!leftContainer.current || !rightContainer.current) return;
 
-    let nextMarkerOffset = defaultPointerOffset ?? 0;
+    let leftHeight = leftContainer.current.offsetTop;
+    let rightHeight = rightContainer.current.offsetTop;
+
+    const defaultMarkerOffset = elements[0].marker?.offsetTop ?? 0;
+    let nextMarkerOffset = defaultMarkerOffset;
 
     elements.forEach((refs) => {
       const { item, pointer, marker } = refs;
@@ -87,27 +71,17 @@ export function Timeline(props: TimelineProps) {
       marker.style.marginTop = `${nextMarkerOffset}px`;
 
       const markerOffsetCompensation = getMinMarkerGapCompensation(leftHeight, rightHeight);
-      nextMarkerOffset = markerOffsetCompensation + (defaultPointerOffset ?? 0);
+      nextMarkerOffset = markerOffsetCompensation + defaultMarkerOffset;
 
-      // defines whether an item should be positioned left or right of the timeline
+      // defines whether an item should be appended on the left or right side of the timeline
       if ((positioning !== 'right' && leftHeight > rightHeight) || positioning === 'left') {
-        item.style.top = `${rightHeight}px`;
-        item.classList.add('timeline-item--right');
-        item.classList.remove('timeline-item--left');
-        rightHeight += item.offsetHeight + (gap ?? 0);
+        rightContainer.current?.appendChild(item);
+        rightHeight += item.offsetHeight;
       } else {
-        item.style.top = `${leftHeight}px`;
-        item.classList.add('timeline-item--left');
-        item.classList.remove('timeline-item--right');
-        leftHeight += item.offsetHeight + (gap ?? 0);
+        leftContainer.current?.appendChild(item);
+        leftHeight += item.offsetHeight;
       }
     });
-
-    // update height of container element to match absolute positioned timeline
-    const timelineElement = timelineRef.current;
-    if (timelineElement) {
-      timelineElement.style.height = `${Math.max(leftHeight, rightHeight)}px`;
-    }
   }
 
   useEffect(() => {
@@ -123,24 +97,30 @@ export function Timeline(props: TimelineProps) {
 
   return (
     <div className={['timeline', `timeline--${positioning}`, className].join(' ')} ref={timelineRef}>
+      <div ref={leftContainer} className="timeline__items-container timeline__items-container--left">
+        {/* First all items are rendered in the left column. They will be assigned to the corresponding column later */}
+        {items.map((item) => (
+          <TimelineItem
+            dateFormat={dateFormat}
+            dateLocale={dateLocale}
+            customMarker={customMarker}
+            customPointer={customPointer}
+            {...item}
+            ref={(node) => {
+              const map = getRefMap();
+              if (node) {
+                map.set(item.key, node);
+              } else {
+                map.delete(item.key);
+              }
+            }}
+          />
+        ))}
+      </div>
+
       <div className="timeline__line" />
-      {items.map((item) => (
-        <TimelineItem
-          dateFormat={dateFormat}
-          dateLocale={dateLocale}
-          customMarker={customMarker}
-          customPointer={customPointer}
-          {...item}
-          ref={(node) => {
-            const map = getRefMap();
-            if (node) {
-              map.set(item.key, node);
-            } else {
-              map.delete(item.key);
-            }
-          }}
-        />
-      ))}
+
+      <div ref={rightContainer} className="timeline__items-container timeline__items-container--right" />
     </div>
   );
 }
