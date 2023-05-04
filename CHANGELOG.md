@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/openscript-ch/react-alternating-timeline/compare/v1.0.1...v2.0.0) (2023-05-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* position items without absolute styling
+
+### Code Refactoring
+
+* position items without absolute styling ([afb9dd9](https://github.com/openscript-ch/react-alternating-timeline/commit/afb9dd91f2f6a3afce988994063163eaedf8748a))
+
 ## [1.0.1](https://github.com/openscript-ch/react-alternating-timeline/compare/v1.0.0...v1.0.1) (2023-02-09)
 
 
