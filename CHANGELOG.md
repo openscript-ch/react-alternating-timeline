@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.0.0...v2.0.1) (2023-05-24)
+
+
+### Bug Fixes
+
+* character escaping in readme ([162899e](https://github.com/openscript-ch/react-alternating-timeline/commit/162899eea6e631499ce10d6ce277ad180c957324))
+
 ## [2.0.0](https://github.com/openscript-ch/react-alternating-timeline/compare/v1.0.1...v2.0.0) (2023-05-04)
 
 
