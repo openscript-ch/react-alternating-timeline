@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.0.0...v2.0.1) (2023-05-24)
+
+
+### Bug Fixes
+
+* reposition items on height changes [2a536d7](https://github.com/openscript-ch/react-alternating-timeline/commit/2a536d71f09563a1fa0a6d1aa17bd8cd09b5cc32)
+
 ## [2.0.0](https://github.com/openscript-ch/react-alternating-timeline/compare/v1.0.1...v2.0.0) (2023-05-04)
 
 
