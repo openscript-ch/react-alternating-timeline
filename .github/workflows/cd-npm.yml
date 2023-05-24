@@ -2,8 +2,9 @@ name: Continuous deployment (NPM)
 
 on:
   workflow_dispatch:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
 
 jobs:
   build-and-deploy:
