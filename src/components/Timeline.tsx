@@ -90,10 +90,16 @@ export function Timeline(props: TimelineProps) {
   }, [styleConfig]);
 
   useEffect(() => {
-    window.addEventListener('resize', positionTimelineItems);
-    return () => window.removeEventListener('resize', positionTimelineItems);
+    const resizeObserver = new ResizeObserver(positionTimelineItems);
+
+    if (leftContainer.current) {
+      resizeObserver.observe(leftContainer.current);
+    }
+    if (rightContainer.current) {
+      resizeObserver.observe(rightContainer.current);
+    }
+    return () => resizeObserver.disconnect();
   }, []);
-  useEffect(positionTimelineItems, [itemsRef]);
 
   return (
     <div className={['timeline', `timeline--${positioning}`, className].join(' ')} ref={timelineRef}>
