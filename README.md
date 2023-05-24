@@ -49,17 +49,17 @@ const items: TimelineItemsProps = [
 
 The available properties of the `Timeline` component:
 
-| Property         | Type                                        | Description                                                                                                                                   | Default         |
-| :--------------- | :------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- |
-| `items`          | [`TimelineItemsProps`](#timelineitemsprops) | Array of timeline items                                                                                                                       |                 |
-| `positioning?`   | `'alternating' \| 'left' \| 'right'`        | How the items should be positioned relative to the timeline                                                                                   | `'alternating'` |
-| `minMarkerGap?`  | `number`                                    | The minimum gap markers will have between each other                                                                                          | 50 (`px`)       |
-| `dateLocal?`     | `Local`                                     | Date locale                                                                                                                                   |                 |
-| `dateFormat?`    | `string`                                    | Specific date format according to date-fns [specification](https://date-fns.org/v2.29.3/docs/format). Ignored when passing a `string` as date | `'P'`           |
-| `customMarker?`  | `ReactElement`                              | Custom maker element replacing the default                                                                                                    |                 |
-| `customPointer?` | `ReactElement`                              | Custom pointer element replacing the default                                                                                                  |                 |
-| `styleConfig?`   | [`StyleConfig`](#styleconfig)               | Style config object for customizing timeline by setting css custom properties                                                                 |                 |
-| `className?`     | `string`                                    | Additional class name                                                                                                                         |                 |
+| Property         | Type                                        | Description                                                                                                                                   | Default   |
+| :--------------- | :------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------- | :-------- | ----------------------------------------------------------- | --------------- |
+| `items`          | [`TimelineItemsProps`](#timelineitemsprops) | Array of timeline items                                                                                                                       |           |
+| `positioning?`   | `'alternating'                              | 'left'                                                                                                                                        | 'right'`  | How the items should be positioned relative to the timeline | `'alternating'` |
+| `minMarkerGap?`  | `number`                                    | The minimum gap markers will have between each other                                                                                          | 50 (`px`) |
+| `dateLocal?`     | `Local`                                     | Date locale                                                                                                                                   |           |
+| `dateFormat?`    | `string`                                    | Specific date format according to date-fns [specification](https://date-fns.org/v2.29.3/docs/format). Ignored when passing a `string` as date | `'P'`     |
+| `customMarker?`  | `ReactElement`                              | Custom maker element replacing the default                                                                                                    |           |
+| `customPointer?` | `ReactElement`                              | Custom pointer element replacing the default                                                                                                  |           |
+| `styleConfig?`   | [`StyleConfig`](#styleconfig)               | Style config object for customizing timeline by setting css custom properties                                                                 |           |
+| `className?`     | `string`                                    | Additional class name                                                                                                                         |           |
 
 ### TimelineItemsProps
 
