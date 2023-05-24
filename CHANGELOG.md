@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.0.1...v2.0.2) (2023-05-24)
+
+
+### Bug Fixes
+
+* npm cd ([5565fa3](https://github.com/openscript-ch/react-alternating-timeline/commit/5565fa38fccd94237f5b8f1ff1ec1a35aa3082c2))
+
 ## [2.0.1](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.0.0...v2.0.1) (2023-05-24)
 
 
