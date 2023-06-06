@@ -69,7 +69,7 @@
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
-    "@vitejs/plugin-react": "^3.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "@vitest/coverage-istanbul": "^0.32.0",
     "babel-loader": "^9.1.0",
     "date-fns": "^2.29.3",
