@@ -265,3 +265,11 @@ export const CustomMarkerAndPointer: StoryObj<typeof Timeline> = {
     customPointer: <div className="pointy" />,
   },
 };
+
+export const DateFormatting: StoryObj<typeof Timeline> = {
+  args: {
+    items,
+    ...defaultTimelineConfig,
+    formatDate: (date) => date.toDateString(),
+  },
+};
