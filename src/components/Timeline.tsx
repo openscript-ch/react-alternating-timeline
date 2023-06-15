@@ -8,8 +8,7 @@ export type TimelineProps = {
   items: TimelineItemsProps;
   positioning?: Positioning;
   minMarkerGap?: number;
-  dateFormat?: string;
-  dateLocale?: Locale;
+  formatDate?: (date: Date) => string;
   customMarker?: ReactElement;
   customPointer?: ReactElement;
   styleConfig?: StyleConfig;
@@ -19,11 +18,10 @@ export type TimelineProps = {
 export const defaultTimelineConfig: Partial<TimelineProps> = {
   positioning: 'alternating',
   minMarkerGap: 50,
-  dateFormat: 'P',
 };
 
 export function Timeline(props: TimelineProps) {
-  const { items, positioning, minMarkerGap, className, dateFormat, dateLocale, customMarker, customPointer, styleConfig } = {
+  const { items, positioning, minMarkerGap, className, customMarker, customPointer, styleConfig, formatDate } = {
     ...defaultTimelineConfig,
     ...props,
   };
@@ -107,10 +105,9 @@ export function Timeline(props: TimelineProps) {
         {/* First all items are rendered in the left column. They will be assigned to the corresponding column later */}
         {items.map((item) => (
           <TimelineItem
-            dateFormat={dateFormat}
-            dateLocale={dateLocale}
             customMarker={customMarker}
             customPointer={customPointer}
+            formatDate={formatDate}
             {...item}
             ref={(node) => {
               const map = getRefMap();

@@ -8,7 +8,7 @@ A compact, masonry style alternating timeline react component which is fully cus
 
 - 🎛️ Customize everything.
 - 🎨 Consistent ([BEM](https://getbem.com)) class naming for easy styling with CSS, emotion...
-- ⏰ Date formatting using [date-fns](date-fns.org) standard.
+- ⏰ Custom date formatting.
 - ⚖️ Alternating, left or right positioning.
 - 🖼️ Render images and custom content.
 - 🪄 Built with Typescript.
@@ -49,32 +49,30 @@ const items: TimelineItemsProps = [
 
 The available properties of the `Timeline` component:
 
-| Property         | Type                                        | Description                                                                                                                                   | Default   |
-| :--------------- | :------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------- | :-------- | ----------------------------------------------------------- | --------------- |
-| `items`          | [`TimelineItemsProps`](#timelineitemsprops) | Array of timeline items                                                                                                                       |           |
-| `positioning?`   | `'alternating'                              | 'left'                                                                                                                                        | 'right'`  | How the items should be positioned relative to the timeline | `'alternating'` |
-| `minMarkerGap?`  | `number`                                    | The minimum gap markers will have between each other                                                                                          | 50 (`px`) |
-| `dateLocal?`     | `Local`                                     | Date locale                                                                                                                                   |           |
-| `dateFormat?`    | `string`                                    | Specific date format according to date-fns [specification](https://date-fns.org/v2.29.3/docs/format). Ignored when passing a `string` as date | `'P'`     |
-| `customMarker?`  | `ReactElement`                              | Custom maker element replacing the default                                                                                                    |           |
-| `customPointer?` | `ReactElement`                              | Custom pointer element replacing the default                                                                                                  |           |
-| `styleConfig?`   | [`StyleConfig`](#styleconfig)               | Style config object for customizing timeline by setting css custom properties                                                                 |           |
-| `className?`     | `string`                                    | Additional class name                                                                                                                         |           |
+| Property         | Type                                        | Description                                                                   | Default         |
+| :--------------- | :------------------------------------------ | :---------------------------------------------------------------------------- | :-------------- |
+| `items`          | [`TimelineItemsProps`](#timelineitemsprops) | Array of timeline items                                                       |                 |
+| `positioning?`   | `'alternating' \| 'left' \| 'right'`        | How the items should be positioned relative to the timeline                   | `'alternating'` |
+| `minMarkerGap?`  | `number`                                    | The minimum gap markers will have between each other                          | 50 (`px`)       |
+| `formatDate?`    | `(date: Date) => string`                    | Callback to format date                                                       |                 |
+| `customMarker?`  | `ReactElement`                              | Custom maker element replacing the default                                    |                 |
+| `customPointer?` | `ReactElement`                              | Custom pointer element replacing the default                                  |                 |
+| `styleConfig?`   | [`StyleConfig`](#styleconfig)               | Style config object for customizing timeline by setting css custom properties |                 |
+| `className?`     | `string`                                    | Additional class name                                                         |                 |
 
 ### TimelineItemsProps
 
 An array of the following properties:
 
-| Property         | Type             | Description                                                                      |
-| :--------------- | :--------------- | :------------------------------------------------------------------------------- |
-| `key`            | `Key`            | Unique key for each item                                                         |
-| `title?`         | `string`         | Optional title paragraph displayed bold                                          |
-| `date`           | `Date \| string` | Date either being formatted according to provided format or passed as a `string` |
-| `children?`      | `ReactNode`      | Pass custom content as `children` to the component                               |
-| `dateFormat?`    | `string`         | Overwriting `dateFormat` property of parent `Timeline`                           |
-| `dateLocale?`    | `string`         | Overwriting `dateLocale` property of parent `Timeline`                           |
-| `customMarker?`  | `ReactElement`   | Overwriting `customMarker` property of parent `Timeline`                         |
-| `customPointer?` | `ReactElement`   | Overwriting `customPointer` property of parent `Timeline`                        |
+| Property         | Type                     | Description                                                                      |
+| :--------------- | :----------------------- | :------------------------------------------------------------------------------- |
+| `key`            | `Key`                    | Unique key for each item                                                         |
+| `title?`         | `string`                 | Optional title paragraph displayed bold                                          |
+| `date`           | `Date \| string`         | Date either being formatted according to provided format or passed as a `string` |
+| `children?`      | `ReactNode`              | Pass custom content as `children` to the component                               |
+| `formatDate?`    | `(date: Date) => string` | Callback to format date of specific item                                         |
+| `customMarker?`  | `ReactElement`           | Overwriting `customMarker` property of parent `Timeline`                         |
+| `customPointer?` | `ReactElement`           | Overwriting `customPointer` property of parent `Timeline`                        |
 
 ### StyleConfig
 
