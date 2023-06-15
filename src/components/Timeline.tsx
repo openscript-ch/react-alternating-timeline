@@ -8,7 +8,7 @@ export type TimelineProps = {
   items: TimelineItemsProps;
   positioning?: Positioning;
   minMarkerGap?: number;
-  formatDate?: (date: Date) => void;
+  formatDate?: (date: Date) => string;
   customMarker?: ReactElement;
   customPointer?: ReactElement;
   styleConfig?: StyleConfig;

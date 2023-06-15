@@ -12,7 +12,7 @@ export type TimelineItemProps = PropsWithChildren<{
   className?: string;
   title?: string;
   date: Date | string;
-  formatDate?: (date: Date) => void;
+  formatDate?: (date: Date) => string;
   customMarker?: ReactElement;
   customPointer?: ReactElement;
 }>;
