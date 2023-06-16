@@ -32,15 +32,14 @@
 .timeline-line__end {
   position: absolute;
   left: 50%;
+  transform: translate(-50%);
 }
 
 .timeline-line__end--opening {
-  transform: translate(-50%, -100%);
   top: 0;
 }
 
 .timeline-line__end--closing {
-  transform: translate(-50%, 100%);
   bottom: 0;
 }
 
