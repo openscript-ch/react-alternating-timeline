@@ -257,8 +257,12 @@ customItems[3] = {
   customPointer: <div className="pointy" style={{ backgroundColor: 'green' }} />,
 };
 
-export const CustomMarkerAndPointer: StoryObj<typeof Timeline> = {
+export const CustomMarkerPointerAndEnds: StoryObj<typeof Timeline> = {
   args: {
+    customTimelineEnds: {
+      opening: <div style={{ width: '1rem', height: '1rem', backgroundColor: 'green' }} />,
+      closing: <div style={{ width: '1rem', height: '1rem', backgroundColor: 'blue' }} />,
+    },
     items: customItems,
     ...defaultTimelineConfig,
     customMarker: <span style={{ fontSize: '2rem' }}>🔥</span>,
