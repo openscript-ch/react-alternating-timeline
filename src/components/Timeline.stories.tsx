@@ -169,6 +169,9 @@ export const SpacingOptions: StoryObj<typeof Timeline> = {
       pointer: {
         offset: '4rem',
       },
+      line: {
+        overhang: '4rem',
+      },
     },
     minMarkerGap: 150,
   },

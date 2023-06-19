@@ -1,6 +1,7 @@
 :where(.timeline) {
   --line-width: 0.2rem;
   --line-color: black;
+  --line-overhang: 1rem;
   --marker-size: 1rem;
   --marker-color: var(--line-color);
   --marker-radius: 50%;
@@ -12,11 +13,9 @@
   --card-offset: 1rem;
   --card-shadow: unset;
   --card-padding: 1rem;
-  --gap: 1rem;
   --offset-left: 0;
   --offset-right: 5rem;
-
-  position: relative;
+  --gap: 1rem;
 }
 
 .timeline {
@@ -45,6 +44,7 @@
 
 .timeline__items-container {
   display: flex;
+  padding-block: var(--line-overhang);
   flex-direction: column;
   gap: var(--gap);
   flex: 1;

@@ -4,6 +4,7 @@ export type StyleConfig = {
   line?: {
     width?: string;
     color?: string;
+    overhang?: string;
   };
   gap?: string;
   offset?: {
