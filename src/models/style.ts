@@ -1,37 +1,40 @@
-import { flattenObject } from '../helper/object';
+import { CSSProperties } from 'react';
+import { camelCaseToKebabCase, flattenObject } from '../helper/object';
 
 export type StyleConfig = {
   line?: {
-    width?: string;
-    color?: string;
-    overhang?: string;
+    width?: CSSProperties['width'];
+    color?: CSSProperties['backgroundColor'];
+    overhang?: CSSProperties['paddingBlock'];
   };
-  gap?: string;
-  offset?: {
-    left?: string;
-    right?: string;
+  item?: {
+    gap?: CSSProperties['gap'];
+    startOffset?: {
+      left?: CSSProperties['marginTop'];
+      right?: CSSProperties['marginTop'];
+    };
   };
   marker?: {
-    size?: string;
-    color?: string;
-    radius?: string;
+    size?: CSSProperties['width'];
+    color?: CSSProperties['backgroundColor'];
+    radius?: CSSProperties['borderRadius'];
   };
   pointer?: {
-    height?: string;
-    width?: string;
-    offset?: string;
+    height?: CSSProperties['height'];
+    width?: CSSProperties['width'];
+    minOffset?: CSSProperties['marginTop'];
+    spacing?: CSSProperties['gap'];
   };
   card?: {
-    background?: string;
-    radius?: string;
-    offset?: string;
-    shadow?: string;
-    padding?: string;
+    background?: CSSProperties['backgroundColor'];
+    radius?: CSSProperties['borderRadius'];
+    shadow?: CSSProperties['boxShadow'];
+    padding?: CSSProperties['padding'];
   };
 };
 
 export const convertToCssVariable = (styleConfig: StyleConfig) =>
-  Object.entries(flattenObject(styleConfig, '-')).reduce(
-    (prev: Record<string, string>, [key, value]) => ({ ...prev, [`--${key}`]: value }),
+  Object.entries(flattenObject(styleConfig, '-', camelCaseToKebabCase)).reduce(
+    (prev: Record<string, string>, [key, value]) => ({ ...prev, [`--${key}`]: typeof value === 'number' ? `${value}px` : value }),
     {},
   );

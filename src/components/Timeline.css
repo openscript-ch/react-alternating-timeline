@@ -2,20 +2,20 @@
   --line-width: 0.2rem;
   --line-color: black;
   --line-overhang: 1rem;
+  --item-gap: 1rem;
+  --item-start-offset-left: 0;
+  --item-start-offset-right: 5rem;
   --marker-size: 1rem;
   --marker-color: var(--line-color);
   --marker-radius: 50%;
   --pointer-height: 2rem;
   --pointer-width: 1rem;
-  --pointer-offset: 5rem;
+  --pointer-min-offset: 5rem;
+  --pointer-spacing: 1rem;
   --card-background: whitesmoke;
   --card-radius: 0.1rem;
-  --card-offset: 1rem;
   --card-shadow: unset;
   --card-padding: 1rem;
-  --offset-left: 0;
-  --offset-right: 5rem;
-  --gap: 1rem;
 }
 
 .timeline {
@@ -46,16 +46,16 @@
   display: flex;
   padding-block: var(--line-overhang);
   flex-direction: column;
-  gap: var(--gap);
+  gap: var(--item-gap);
   flex: 1;
 }
 
 .timeline__items-container--left {
-  margin-top: var(--offset-left);
+  margin-top: var(--item-start-offset-left);
 }
 
 .timeline__items-container--right {
-  margin-top: var(--offset-right);
+  margin-top: var(--item-start-offset-right);
 }
 
 .timeline-item {
@@ -63,7 +63,7 @@
   display: flex;
   align-items: flex-start;
   transition: top 0.1s;
-  gap: var(--card-offset);
+  gap: var(--pointer-spacing);
 }
 
 .timeline__items-container--left .timeline-item {
@@ -71,7 +71,7 @@
 }
 
 .timeline-item__marker {
-  margin-top: var(--pointer-offset);
+  margin-top: var(--pointer-min-offset);
 }
 
 .timeline-item__marker:not(.timeline-item__marker--custom) {
