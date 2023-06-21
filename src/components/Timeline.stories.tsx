@@ -193,6 +193,7 @@ export const CustomStyle: StoryObj<typeof Timeline> = {
         background: 'white',
         radius: '.2rem',
         shadow: '.1rem .1rem .5rem rgb(0,0,0,0.1)',
+        offset: '2rem',
       },
       line: {
         width: '.1rem',
@@ -206,7 +207,6 @@ export const CustomStyle: StoryObj<typeof Timeline> = {
       pointer: {
         width: '2rem',
         height: '2rem',
-        spacing: '2rem',
       },
     },
   },
