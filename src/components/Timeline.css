@@ -11,11 +11,11 @@
   --pointer-height: 2rem;
   --pointer-width: 1rem;
   --pointer-min-offset: 5rem;
-  --pointer-spacing: 1rem;
   --card-background: whitesmoke;
   --card-radius: 0.1rem;
   --card-shadow: unset;
   --card-padding: 1rem;
+  --card-offset: 1rem;
 }
 
 .timeline {
@@ -63,7 +63,7 @@
   display: flex;
   align-items: flex-start;
   transition: top 0.1s;
-  gap: var(--pointer-spacing);
+  gap: var(--card-offset);
 }
 
 .timeline__items-container--left .timeline-item {

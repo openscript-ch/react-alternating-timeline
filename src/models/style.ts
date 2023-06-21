@@ -23,13 +23,13 @@ export type StyleConfig = {
     height?: CSSProperties['height'];
     width?: CSSProperties['width'];
     minOffset?: CSSProperties['marginTop'];
-    spacing?: CSSProperties['gap'];
   };
   card?: {
     background?: CSSProperties['backgroundColor'];
     radius?: CSSProperties['borderRadius'];
     shadow?: CSSProperties['boxShadow'];
     padding?: CSSProperties['padding'];
+    offset?: CSSProperties['gap'];
   };
 };
 
