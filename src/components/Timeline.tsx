@@ -97,7 +97,7 @@ export function Timeline(props: TimelineProps) {
       resizeObserver.observe(rightContainer.current);
     }
     return () => resizeObserver.disconnect();
-  }, []);
+  }, [positioning]);
 
   return (
     <div className={['timeline', `timeline--${positioning}`, className].join(' ')} ref={timelineRef}>
