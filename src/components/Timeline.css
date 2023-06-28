@@ -46,8 +46,8 @@
   display: flex;
   padding-block: var(--line-overhang);
   flex-direction: column;
-  gap: var(--item-gap);
   flex: 1;
+  gap: var(--item-gap);
 }
 
 .timeline__items-container--left {
@@ -64,6 +64,10 @@
   align-items: flex-start;
   transition: top 0.1s;
   gap: var(--card-offset);
+}
+
+.timeline-item:not(:last-child) {
+  margin-bottom: var(--gap);
 }
 
 .timeline__items-container--left .timeline-item {

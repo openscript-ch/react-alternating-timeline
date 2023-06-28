@@ -59,8 +59,15 @@ export function Timeline(props: TimelineProps) {
     let leftHeight = leftContainer.current.offsetTop;
     let rightHeight = rightContainer.current.offsetTop;
 
-    const defaultMarkerOffset = elements[0].marker?.offsetTop ?? 0;
+    const [firstElement] = elements;
+
+    const defaultMarkerOffset = firstElement.marker?.offsetTop ?? 0;
     let nextMarkerOffset = defaultMarkerOffset;
+
+    if (!firstElement.item) return;
+
+    const { marginBottom } = getComputedStyle(firstElement.item);
+    const gapHeight = parseFloat(marginBottom);
 
     elements.forEach((refs) => {
       const { item, pointer, marker } = refs;
@@ -76,10 +83,10 @@ export function Timeline(props: TimelineProps) {
       // defines whether an item should be appended on the left or right side of the timeline
       if ((positioning !== 'right' && leftHeight > rightHeight) || positioning === 'left') {
         rightContainer.current?.appendChild(item);
-        rightHeight += item.offsetHeight;
+        rightHeight += item.offsetHeight + gapHeight;
       } else {
         leftContainer.current?.appendChild(item);
-        leftHeight += item.offsetHeight;
+        leftHeight += item.offsetHeight + gapHeight;
       }
     });
   }
@@ -99,7 +106,7 @@ export function Timeline(props: TimelineProps) {
       resizeObserver.observe(rightContainer.current);
     }
     return () => resizeObserver.disconnect();
-  }, []);
+  }, [positioning]);
 
   return (
     <div className={['timeline', `timeline--${positioning}`, className].join(' ')} ref={timelineRef}>
