@@ -161,13 +161,18 @@ export const SpacingOptions: StoryObj<typeof Timeline> = {
     items,
     ...defaultTimelineConfig,
     styleConfig: {
-      gap: '5rem',
-      offset: {
-        left: '10rem',
-        right: '3rem',
+      item: {
+        gap: '5rem',
+        startOffset: {
+          left: '10rem',
+          right: '3rem',
+        },
       },
       pointer: {
-        offset: '4rem',
+        minOffset: '4rem',
+      },
+      line: {
+        overhang: '4rem',
       },
     },
     minMarkerGap: 150,
@@ -257,8 +262,12 @@ customItems[3] = {
   customPointer: <div className="pointy" style={{ backgroundColor: 'green' }} />,
 };
 
-export const CustomMarkerAndPointer: StoryObj<typeof Timeline> = {
+export const CustomMarkerPointerAndEnds: StoryObj<typeof Timeline> = {
   args: {
+    customTimelineEnds: {
+      opening: <div style={{ width: '1rem', height: '1rem', backgroundColor: 'green' }} />,
+      closing: <div style={{ width: '1rem', height: '1rem', backgroundColor: 'blue' }} />,
+    },
     items: customItems,
     ...defaultTimelineConfig,
     customMarker: <span style={{ fontSize: '2rem' }}>🔥</span>,

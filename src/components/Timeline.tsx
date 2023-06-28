@@ -3,6 +3,7 @@ import { Key, ReactElement, useEffect, useRef } from 'react';
 import { TimelineItem, TimelineItemRefs, TimelineItemsProps } from './TimelineItem';
 import { Positioning } from '../models/positioning';
 import { convertToCssVariable, StyleConfig } from '../models/style';
+import { isElement } from '../helper/element';
 
 export type TimelineProps = {
   items: TimelineItemsProps;
@@ -11,6 +12,7 @@ export type TimelineProps = {
   formatDate?: (date: Date) => string;
   customMarker?: ReactElement;
   customPointer?: ReactElement;
+  customTimelineEnds?: ReactElement | { opening?: ReactElement; closing?: ReactElement };
   styleConfig?: StyleConfig;
   className?: string;
 };
@@ -21,7 +23,7 @@ export const defaultTimelineConfig: Partial<TimelineProps> = {
 };
 
 export function Timeline(props: TimelineProps) {
-  const { items, positioning, minMarkerGap, className, customMarker, customPointer, styleConfig, formatDate } = {
+  const { items, positioning, minMarkerGap, className, customMarker, customPointer, customTimelineEnds, styleConfig, formatDate } = {
     ...defaultTimelineConfig,
     ...props,
   };
@@ -128,7 +130,14 @@ export function Timeline(props: TimelineProps) {
         ))}
       </div>
 
-      <div className="timeline__line" />
+      <div className="timeline-line">
+        <div className="timeline-line__end timeline-line__end--opening">
+          {isElement(customTimelineEnds) ? customTimelineEnds : customTimelineEnds?.opening}
+        </div>
+        <div className="timeline-line__end timeline-line__end--closing">
+          {isElement(customTimelineEnds) ? customTimelineEnds : customTimelineEnds?.closing}
+        </div>
+      </div>
 
       <div ref={rightContainer} className="timeline__items-container timeline__items-container--right" />
     </div>

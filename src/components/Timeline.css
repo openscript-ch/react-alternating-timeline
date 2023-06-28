@@ -1,45 +1,61 @@
 :where(.timeline) {
   --line-width: 0.2rem;
   --line-color: black;
+  --line-overhang: 1rem;
+  --item-gap: 1rem;
+  --item-start-offset-left: 0;
+  --item-start-offset-right: 5rem;
   --marker-size: 1rem;
   --marker-color: var(--line-color);
   --marker-radius: 50%;
   --pointer-height: 2rem;
   --pointer-width: 1rem;
-  --pointer-offset: 5rem;
+  --pointer-min-offset: 5rem;
   --card-background: whitesmoke;
   --card-radius: 0.1rem;
-  --card-offset: 1rem;
   --card-shadow: unset;
   --card-padding: 1rem;
-  --gap: 1rem;
-  --offset-left: 0;
-  --offset-right: 5rem;
-
-  position: relative;
+  --card-offset: 1rem;
 }
 
 .timeline {
   display: flex;
 }
 
-.timeline__line {
+.timeline-line {
   background-color: var(--line-color);
   min-width: var(--line-width);
+  position: relative;
+}
+
+.timeline-line__end {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.timeline-line__end--opening {
+  top: 0;
+}
+
+.timeline-line__end--closing {
+  bottom: 0;
 }
 
 .timeline__items-container {
   display: flex;
+  padding-block: var(--line-overhang);
   flex-direction: column;
   flex: 1;
+  gap: var(--item-gap);
 }
 
 .timeline__items-container--left {
-  margin-top: var(--offset-left);
+  margin-top: var(--item-start-offset-left);
 }
 
 .timeline__items-container--right {
-  margin-top: var(--offset-right);
+  margin-top: var(--item-start-offset-right);
 }
 
 .timeline-item {
@@ -59,7 +75,7 @@
 }
 
 .timeline-item__marker {
-  margin-top: var(--pointer-offset);
+  margin-top: var(--pointer-min-offset);
 }
 
 .timeline-item__marker:not(.timeline-item__marker--custom) {
