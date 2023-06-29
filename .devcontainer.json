@@ -1,0 +1,19 @@
+{
+  "name": "react-alternating-timeline",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "esbenp.prettier-vscode",
+        "mikestead.dotenv",
+        "eamodio.gitlens",
+        "vscode-icons-team.vscode-icons",
+        "mgmcdermott.vscode-language-babel",
+        "dbaeumer.vscode-eslint",
+        "styled-components.vscode-styled-components",
+        "silvenon.mdx"
+      ]
+    }
+  }
+}
