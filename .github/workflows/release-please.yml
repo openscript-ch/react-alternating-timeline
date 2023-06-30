@@ -15,3 +15,9 @@ jobs:
         with:
           release-type: node
           package-name: react-alternating-timeline
+
+      - name: Call for deployment
+        uses: ./.github/workflows/cd-npm.yml
+        with:
+          ref: refs/tags/${{ steps.release.outputs.tag_name }}
+        if: ${{ steps.release.outputs.releases_created }}
