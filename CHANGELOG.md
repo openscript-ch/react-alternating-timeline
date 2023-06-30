@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.1.1...v2.1.2) (2023-06-30)
+
+
+### Bug Fixes
+
+* continuous deployment to npm ([b48d71a](https://github.com/openscript-ch/react-alternating-timeline/commit/b48d71ae0bb7cd02cff25dbb7955629a6960f475))
+
 ## [2.1.1](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.1.0...v2.1.1) (2023-06-30)
 
 
