@@ -7,6 +7,7 @@ on:
 
 jobs:
   release-please:
+    name: Handle releases
     runs-on: ubuntu-latest
     steps:
       - name: Run Release Please
@@ -19,7 +20,8 @@ jobs:
       ref: refs/tags/${{ steps.release.outputs.tag_name }}
       released: ${{ steps.release.outputs.releases_created }}
 
-  call-for-deployment:
+  deploy-to-npm:
+    name: Deploy to NPM
     uses: ./.github/workflows/cd-npm.yml
     needs: release-please
     with:
