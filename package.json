@@ -1,6 +1,6 @@
 {
   "name": "react-alternating-timeline",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "A React component library starter with Storybook, Vite and Typescript.",
   "keywords": [
     "react",
