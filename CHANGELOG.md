@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.1.0](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.0.2...v2.1.0) (2023-06-30)
+
+
+### Features
+
+* introduce custom timeline ends ([33c1bfa](https://github.com/openscript-ch/react-alternating-timeline/commit/33c1bfa199d1dbd67609cd840f20ea0998d2ea0c))
+* introduce line overhang configuration ([e604de5](https://github.com/openscript-ch/react-alternating-timeline/commit/e604de58fcac16d04e9e67d3a341617a99c3fe12))
+* replace date-fns formatting with formatDate callback ([#101](https://github.com/openscript-ch/react-alternating-timeline/issues/101)) ([4310e66](https://github.com/openscript-ch/react-alternating-timeline/commit/4310e66c8945d7c22434be50393cf8c334c8b85c))
+
+
+### Bug Fixes
+
+* consider gaps for positioning ([380bd57](https://github.com/openscript-ch/react-alternating-timeline/commit/380bd571bbb81d0bac8dec6477e586eb560f9148))
+* handling positioning prop update ([#112](https://github.com/openscript-ch/react-alternating-timeline/issues/112)) ([d36e6aa](https://github.com/openscript-ch/react-alternating-timeline/commit/d36e6aa2d92ec7a004941da5ecaaab29d747f096))
+* timeline example ([c4b92d2](https://github.com/openscript-ch/react-alternating-timeline/commit/c4b92d27317acf15c83a33726c1666bb903be486))
+
 ## [2.0.2](https://github.com/openscript-ch/react-alternating-timeline/compare/v2.0.1...v2.0.2) (2023-05-24)
 
 
