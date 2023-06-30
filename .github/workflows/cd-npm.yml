@@ -1,15 +1,11 @@
 name: Continuous deployment (NPM)
 
 on:
-  workflow_dispatch:
   workflow_call:
-  inputs:
-    tag:
-      required: true
-      type: string
-  push:
-    tags:
-      - '*'
+    inputs:
+      ref:
+        required: true
+        type: string
 
 jobs:
   build-and-deploy:
@@ -19,7 +15,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          fetch-depth: '1'
+          ref: ${{ inputs.ref }}
 
       - name: Configure node for npmjs.org as registry
         uses: actions/setup-node@v3
