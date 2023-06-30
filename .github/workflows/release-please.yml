@@ -26,4 +26,6 @@ jobs:
     needs: release-please
     with:
       ref: ${{ needs.release-please.outputs.ref }}
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     if: ${{ needs.release-please.outputs.released }}

@@ -6,6 +6,9 @@ on:
       ref:
         required: true
         type: string
+    secrets:
+      NPM_TOKEN:
+        required: true
 
 jobs:
   build-and-deploy:
