@@ -25,5 +25,5 @@ jobs:
     uses: ./.github/workflows/cd-npm.yml
     needs: release-please
     with:
-      ref: refs/tags/${{ needs.release-please.outputs.ref }}
+      ref: ${{ needs.release-please.outputs.ref }}
     if: ${{ needs.release-please.outputs.released }}
