@@ -2,6 +2,11 @@ name: Continuous deployment (NPM)
 
 on:
   workflow_dispatch:
+  workflow_call:
+  inputs:
+    tag:
+      required: true
+      type: string
   push:
     tags:
       - '*'
@@ -23,7 +28,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci
 
       - name: Build
         run: npm run build
