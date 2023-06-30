@@ -15,13 +15,13 @@ jobs:
         with:
           release-type: node
           package-name: react-alternating-timeline
+    outputs:
+      ref: refs/tags/${{ steps.release.outputs.tag_name }}
+      released: ${{ steps.release.outputs.releases_created }}
 
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        if: ${{ steps.release.outputs.releases_created }}
-
-      - name: Call for deployment
-        uses: ./.github/workflows/cd-npm.yml
-        with:
-          ref: refs/tags/${{ steps.release.outputs.tag_name }}
-        if: ${{ steps.release.outputs.releases_created }}
+  call-for-deployment:
+    uses: ./.github/workflows/cd-npm.yml
+    needs: release-please
+    with:
+      ref: refs/tags/${{ needs.release-please.outputs.ref }}
+    if: ${{ needs.release-please.outputs.released }}
