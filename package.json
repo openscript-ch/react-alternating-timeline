@@ -90,7 +90,7 @@
     "size-limit": "^11.0.0",
     "storybook": "^7.4.1",
     "typescript": "^5.2.2",
-    "vite": "^4.4.4",
+    "vite": "^5.0.0",
     "vite-plugin-css-injected-by-js": "^3.1.2",
     "vite-plugin-dts": "^3.5.3",
     "vitest": "^0.34.4"
